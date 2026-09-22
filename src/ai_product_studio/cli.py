@@ -28,14 +28,38 @@ from ai_product_studio.validation import validate_studio
 from ai_product_studio.workflow import advance_workflow, load_workflow, record_print_result
 
 app = typer.Typer(no_args_is_help=True, help="Manage AI-first printable product lines.")
-product_line_app = typer.Typer(no_args_is_help=True)
-variant_app = typer.Typer(no_args_is_help=True)
-product_app = typer.Typer(no_args_is_help=True)
-registry_app = typer.Typer(no_args_is_help=True)
-assets_app = typer.Typer(no_args_is_help=True)
-workflow_app = typer.Typer(no_args_is_help=True)
-schema_app = typer.Typer(no_args_is_help=True)
-release_app = typer.Typer(no_args_is_help=True)
+product_line_app = typer.Typer(
+    no_args_is_help=True,
+    help="Create and manage product-line workspaces.",
+)
+variant_app = typer.Typer(
+    no_args_is_help=True,
+    help="Create and manage variants within a product line.",
+)
+product_app = typer.Typer(
+    no_args_is_help=True,
+    help="Create and manage individual printable products.",
+)
+registry_app = typer.Typer(
+    no_args_is_help=True,
+    help="Synchronize product-local agents and skills into .github.",
+)
+assets_app = typer.Typer(
+    no_args_is_help=True,
+    help="Inventory managed products and unmanaged legacy assets.",
+)
+workflow_app = typer.Typer(
+    no_args_is_help=True,
+    help="Inspect and advance gated product workflow stages.",
+)
+schema_app = typer.Typer(
+    no_args_is_help=True,
+    help="Generate JSON Schemas from the typed manifest models.",
+)
+release_app = typer.Typer(
+    no_args_is_help=True,
+    help="Create immutable product release manifests.",
+)
 
 app.add_typer(product_line_app, name="product-line")
 app.add_typer(variant_app, name="variant")
@@ -161,7 +185,7 @@ def configure(
         _fail(exc)
 
 
-@app.command("init")
+@app.command("init", help="Initialize a new AI Product Studio directory.")
 def init(
     destination: Annotated[Path, typer.Argument()] = Path("."),
     name: Annotated[str, typer.Option("--name")] = "AI Product Studio",
@@ -175,7 +199,7 @@ def init(
         _fail(exc)
 
 
-@product_line_app.command("create")
+@product_line_app.command("create", help="Create a product-line workspace and manifest.")
 def product_line_create(
     slug: str,
     name: Annotated[str, typer.Option("--name")],
@@ -193,7 +217,7 @@ def product_line_create(
         _fail(exc)
 
 
-@variant_app.command("create")
+@variant_app.command("create", help="Create a named variant under a product line.")
 def variant_create(
     product_line: str,
     slug: str,
@@ -218,7 +242,7 @@ def variant_create(
         _fail(exc)
 
 
-@product_app.command("create")
+@product_app.command("create", help="Create a product workspace directly under a variant.")
 def product_create(
     product_line: str,
     variant: str,
@@ -245,7 +269,10 @@ def product_create(
         _fail(exc)
 
 
-@registry_app.command("sync")
+@registry_app.command(
+    "sync",
+    help="Publish product-local agents and skills to the root .github registry.",
+)
 def registry_sync(
     root: RootOption = None,
     dry_run: Annotated[bool, typer.Option("--dry-run")] = False,
@@ -257,7 +284,7 @@ def registry_sync(
         _fail(exc)
 
 
-@registry_app.command("check")
+@registry_app.command("check", help="Check that the generated .github registry is current.")
 def registry_check(root: RootOption = None) -> None:
     try:
         errors = check_registry(_root(root))
@@ -271,7 +298,10 @@ def registry_check(root: RootOption = None) -> None:
     typer.echo("Registry is synchronized")
 
 
-@assets_app.command("inventory")
+@assets_app.command(
+    "inventory",
+    help="Write a checksummed assets.yaml for a managed product.",
+)
 def assets_inventory(
     product_path: Path,
     root: RootOption = None,
@@ -285,7 +315,10 @@ def assets_inventory(
         _fail(exc)
 
 
-@assets_app.command("legacy-inventory")
+@assets_app.command(
+    "legacy-inventory",
+    help="Report unmanaged model assets without moving or modifying them.",
+)
 def assets_legacy_inventory(
     source: Path,
     output: Annotated[Path, typer.Option("--output")] = Path("report/legacy-assets.yaml"),
@@ -300,7 +333,7 @@ def assets_legacy_inventory(
         _fail(exc)
 
 
-@workflow_app.command("status")
+@workflow_app.command("status", help="Show a product's current workflow and print status.")
 def workflow_status(product_path: Path, root: RootOption = None) -> None:
     try:
         base = _root(root)
@@ -314,7 +347,10 @@ def workflow_status(product_path: Path, root: RootOption = None) -> None:
         _fail(exc)
 
 
-@workflow_app.command("advance")
+@workflow_app.command(
+    "advance",
+    help="Advance a product by one workflow stage after validating its evidence.",
+)
 def workflow_advance(
     product_path: Path,
     stage: WorkflowStage,
@@ -331,7 +367,10 @@ def workflow_advance(
         _fail(exc)
 
 
-@workflow_app.command("print-result")
+@workflow_app.command(
+    "print-result",
+    help="Record passed or failed physical test-print evidence.",
+)
 def workflow_print_result(
     product_path: Path,
     status: str,
@@ -347,7 +386,7 @@ def workflow_print_result(
         _fail(exc)
 
 
-@schema_app.command("write")
+@schema_app.command("write", help="Regenerate JSON Schema files from manifest models.")
 def schema_write(root: RootOption = None) -> None:
     try:
         paths = write_schemas(_root(root))
@@ -356,7 +395,10 @@ def schema_write(root: RootOption = None) -> None:
         _fail(exc)
 
 
-@release_app.command("create")
+@release_app.command(
+    "create",
+    help="Create an immutable release manifest after physical validation.",
+)
 def release_create(
     product_path: Path,
     version: str,
@@ -373,7 +415,7 @@ def release_create(
         _fail(exc)
 
 
-@app.command("validate")
+@app.command("validate", help="Validate studio manifests, assets, skills, and registry state.")
 def validate(root: RootOption = None) -> None:
     try:
         errors = validate_studio(_root(root))
