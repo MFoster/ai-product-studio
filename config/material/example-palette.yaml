@@ -1,0 +1,15 @@
+schema_version: "1.0"
+name: Example four-color palette
+slots:
+  - slot: 1
+    name: primary
+    preview_hex: "#2563EB"
+  - slot: 2
+    name: secondary
+    preview_hex: "#F59E0B"
+  - slot: 3
+    name: accent
+    preview_hex: "#10B981"
+  - slot: 4
+    name: neutral
+    preview_hex: "#374151"

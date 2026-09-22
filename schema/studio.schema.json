@@ -1,0 +1,39 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "default_printer": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Default Printer",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "product_lines": {
+      "items": {
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "type": "string"
+      },
+      "title": "Product Lines",
+      "type": "array"
+    },
+    "registry_index": {
+      "default": ".aps/registry.yaml",
+      "title": "Registry Index",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "default_printer"
+  ],
+  "title": "StudioManifest",
+  "type": "object"
+}
