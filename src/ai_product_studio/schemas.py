@@ -5,6 +5,7 @@ from pathlib import Path
 
 from ai_product_studio.models import (
     AssetManifest,
+    MaterialConfiguration,
     PrinterProfile,
     ProductLineManifest,
     ProductManifest,
@@ -20,6 +21,7 @@ SCHEMAS = {
     "variant": VariantManifest,
     "product": ProductManifest,
     "asset": AssetManifest,
+    "material": MaterialConfiguration,
     "workflow": WorkflowManifest,
     "printer": PrinterProfile,
     "release": ReleaseManifest,

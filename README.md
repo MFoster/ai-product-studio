@@ -39,7 +39,8 @@ python3 -m venv .venv
 ```
 
 The repository starts without a product catalog. Create your first product line
-with the scaffold commands below.
+with the scaffold commands below. Run `aps config` first to describe your
+printer, slicer, and materials.
 
 ## Install for development
 
@@ -97,6 +98,7 @@ clock-tower
 | Command | Purpose |
 |---|---|
 | `aps init` | Initialize a new studio directory |
+| `aps config` | Interactively configure the studio, printer, and materials |
 | `aps product-line create` | Create a product-line workspace |
 | `aps variant create` | Create a named variant under a product line |
 | `aps product create` | Create a product directly under a variant |
@@ -136,12 +138,98 @@ Initialization creates:
 
 - `config/studio.yaml`
 - `config/printer/generic-fdm.yaml`
+- `config/material/material.yaml`
 - Root `AGENTS.md`
 - `.github/agents`, `.github/skills`, and `.github/instructions`
 - `product-line`, `schema`, and `template`
 
 `--force` permits replacing generated initialization files. Use it deliberately;
 it is not required for ordinary setup.
+
+## Configure printers and materials
+
+Run the interactive configuration wizard from anywhere inside the studio:
+
+```bash
+aps config
+```
+
+The wizard prompts for:
+
+- Studio name.
+- Printer profile slug and display name.
+- X, Y, and Z build volume in millimeters.
+- Nozzle diameter.
+- Minimum wall thickness and printable detail.
+- Automated multi-material support and maximum simultaneous slots.
+- Preferred slicer and package format.
+- Comma-separated material types.
+
+Supported material presets are:
+
+```text
+abs, asa, nylon, pc, petg, pla, tpu
+```
+
+Each preset supplies broad starting ranges for nozzle and bed temperatures,
+minimum wall guidance, shrink compensation, and handling notes. These are
+starting values, not substitutes for filament-manufacturer recommendations or
+printer calibration.
+
+The wizard displays a summary and asks for confirmation before writing. Use
+`--yes` to skip only the final confirmation while retaining all prompts:
+
+```bash
+aps config --yes
+```
+
+Write configuration for a studio outside the current directory:
+
+```bash
+aps config --root /path/to/studio
+```
+
+The command writes or replaces:
+
+```text
+config/studio.yaml
+config/printer/<printer-slug>.yaml
+config/material/material.yaml
+```
+
+Existing `product_lines` registrations and registry settings in `studio.yaml`
+are preserved. When the default printer slug changes, the previous default
+printer file is removed after the new profile is written.
+
+Example session:
+
+```text
+$ aps config
+Configure AI Product Studio
+Supported material presets: abs, asa, nylon, pc, petg, pla, tpu
+Studio name [AI Product Studio]:
+Printer profile slug [generic-fdm]: corexy-300
+Printer display name [Generic FDM Printer]: CoreXY 300
+Build volume X (mm) [220.0]: 300
+Build volume Y (mm) [220.0]: 300
+Build volume Z (mm) [250.0]: 320
+Nozzle diameter (mm) [0.4]: 0.6
+Minimum wall thickness (mm) [1.2]: 1.8
+Minimum printable detail (mm) [0.8]: 1.0
+Supports an automated multi-material system? [y/N]: y
+Maximum simultaneous material/color slots [2]: 4
+Preferred slicer [Generic slicer]: Bambu Studio
+Preferred package format (3mf or stl) [3mf]:
+Material types (comma-separated) [pla,petg]: pla,asa
+Write this configuration? [Y/n]:
+```
+
+Run validation after changing configuration:
+
+```bash
+aps schema write
+aps validate
+```
 
 ## Create a product line
 
@@ -397,7 +485,8 @@ A release requires:
 - Current workflow stage is `print-validation`.
 - Physical print status is `passed`.
 - `assets.yaml` exists.
-- At least one 3MF exists in `package/`.
+- At least one package matching the product printer profile (`3mf` or `stl`)
+  exists in `package/`.
 - A release approval reference.
 
 ```bash
@@ -424,6 +513,7 @@ aps validate
 Validation checks:
 
 - Studio and printer manifests.
+- Material configuration and temperature ranges.
 - Product-line, variant, product, workflow, and asset manifests.
 - Required hierarchical `AGENTS.md` files.
 - Asset existence, size, and SHA-256 checksums.
@@ -457,6 +547,8 @@ These commands support `--dry-run`:
 
 Scaffold commands refuse destructive overwrites by default.
 `--force` is available where explicit replacement is supported.
+`aps config` is intentionally interactive and asks for confirmation instead of
+providing a dry-run mode.
 
 The CLI reports errors rather than silently creating partial success states.
 

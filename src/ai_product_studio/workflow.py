@@ -4,7 +4,15 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from ai_product_studio.config import dump_yaml, load_yaml
-from ai_product_studio.models import WORKFLOW_ORDER, WorkflowEvent, WorkflowManifest, WorkflowStage
+from ai_product_studio.models import (
+    WORKFLOW_ORDER,
+    PrinterProfile,
+    ProductManifest,
+    WorkflowEvent,
+    WorkflowManifest,
+    WorkflowStage,
+)
+from ai_product_studio.paths import find_studio_root
 
 
 def load_workflow(product_dir: Path) -> WorkflowManifest:
@@ -36,8 +44,15 @@ def _required_artifacts(product_dir: Path, target: WorkflowStage) -> list[str]:
             errors.append("at least two PNG preview renders are required")
         if not (product_dir / "assets.yaml").is_file():
             errors.append("assets.yaml is required")
-    if target is WorkflowStage.RELEASE and not any((product_dir / "package").glob("*.3mf")):
-        errors.append("at least one 3MF package is required")
+    if target is WorkflowStage.RELEASE:
+        product = ProductManifest.model_validate(load_yaml(product_dir / "product.yaml"))
+        root = find_studio_root(product_dir)
+        printer = PrinterProfile.model_validate(
+            load_yaml(root / "config" / "printer" / f"{product.printer_profile}.yaml")
+        )
+        extension = printer.package_format
+        if not any((product_dir / "package").glob(f"*.{extension}")):
+            errors.append(f"at least one {extension.upper()} package is required")
     return errors
 
 

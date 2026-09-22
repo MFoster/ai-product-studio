@@ -6,7 +6,13 @@ from typing import Annotated
 import typer
 
 from ai_product_studio.assets import inventory_legacy_assets, inventory_product
-from ai_product_studio.models import WorkflowStage
+from ai_product_studio.configuration import (
+    MATERIAL_PRESETS,
+    load_configuration_defaults,
+    parse_material_slugs,
+    write_configuration,
+)
+from ai_product_studio.models import PrinterProfile, WorkflowStage
 from ai_product_studio.paths import find_studio_root
 from ai_product_studio.registry import check as check_registry
 from ai_product_studio.registry import sync as sync_registry
@@ -53,6 +59,106 @@ def _root(value: Path | None) -> Path:
 def _fail(exc: Exception) -> None:
     typer.echo(f"Error: {exc}", err=True)
     raise typer.Exit(1) from exc
+
+
+@app.command("config")
+def configure(
+    root: RootOption = None,
+    yes: Annotated[bool, typer.Option("--yes", "-y", help="Write without final confirmation.")] = (
+        False
+    ),
+) -> None:
+    """Interactively configure the studio printer and material profiles."""
+    try:
+        base = _root(root)
+        defaults = load_configuration_defaults(base)
+        typer.echo("Configure AI Product Studio")
+        typer.echo(f"Supported material presets: {', '.join(sorted(MATERIAL_PRESETS))}")
+
+        studio_name = typer.prompt("Studio name", default=defaults.studio_name)
+        printer_slug = typer.prompt("Printer profile slug", default=defaults.printer.slug)
+        printer_name = typer.prompt("Printer display name", default=defaults.printer.name)
+        build_x = typer.prompt(
+            "Build volume X (mm)", default=defaults.printer.build_volume_mm["x"], type=float
+        )
+        build_y = typer.prompt(
+            "Build volume Y (mm)", default=defaults.printer.build_volume_mm["y"], type=float
+        )
+        build_z = typer.prompt(
+            "Build volume Z (mm)", default=defaults.printer.build_volume_mm["z"], type=float
+        )
+        nozzle = typer.prompt(
+            "Nozzle diameter (mm)", default=defaults.printer.nozzle_diameter_mm, type=float
+        )
+        minimum_wall = typer.prompt(
+            "Minimum wall thickness (mm)",
+            default=defaults.printer.minimum_wall_mm,
+            type=float,
+        )
+        minimum_detail = typer.prompt(
+            "Minimum printable detail (mm)",
+            default=defaults.printer.minimum_detail_mm,
+            type=float,
+        )
+        supports_multi_material = typer.confirm(
+            "Supports an automated multi-material system?",
+            default=defaults.printer.supports_multi_material,
+        )
+        max_material_slots = (
+            typer.prompt(
+                "Maximum simultaneous material/color slots",
+                default=max(defaults.printer.max_material_slots, 2),
+                type=int,
+            )
+            if supports_multi_material
+            else 1
+        )
+        slicer = typer.prompt("Preferred slicer", default=defaults.printer.slicer)
+        package_format = typer.prompt(
+            "Preferred package format (3mf or stl)",
+            default=defaults.printer.package_format,
+        ).lower()
+        material_input = typer.prompt(
+            "Material types (comma-separated)",
+            default=",".join(defaults.materials),
+        )
+        materials = parse_material_slugs(material_input)
+        printer = PrinterProfile(
+            slug=printer_slug,
+            name=printer_name,
+            build_volume_mm={"x": build_x, "y": build_y, "z": build_z},
+            nozzle_diameter_mm=nozzle,
+            minimum_wall_mm=minimum_wall,
+            minimum_detail_mm=minimum_detail,
+            supports_multi_material=supports_multi_material,
+            max_material_slots=max_material_slots,
+            supported_materials=materials,
+            slicer=slicer,
+            package_format=package_format,
+        )
+
+        typer.echo("")
+        typer.echo(f"Studio: {studio_name}")
+        typer.echo(
+            f"Printer: {printer.name} ({printer.slug}), {build_x:g} x {build_y:g} x {build_z:g} mm"
+        )
+        typer.echo(
+            f"Nozzle: {nozzle:g} mm; materials: {', '.join(materials)}; package: {package_format}"
+        )
+        if not yes and not typer.confirm("Write this configuration?", default=True):
+            typer.echo("Configuration unchanged")
+            return
+        paths = write_configuration(
+            base,
+            studio_name=studio_name,
+            printer=printer,
+            material_slugs=materials,
+        )
+        typer.echo("Configuration written:")
+        for path in paths:
+            typer.echo(f"- {path.relative_to(base)}")
+    except (OSError, ValueError) as exc:
+        _fail(exc)
 
 
 @app.command("init")

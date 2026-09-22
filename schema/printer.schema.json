@@ -8,9 +8,9 @@
       "title": "Build Volume Mm",
       "type": "object"
     },
-    "max_ams_colors": {
+    "max_material_slots": {
       "minimum": 1,
-      "title": "Max Ams Colors",
+      "title": "Max Material Slots",
       "type": "integer"
     },
     "minimum_detail_mm": {
@@ -33,8 +33,11 @@
       "type": "number"
     },
     "package_format": {
-      "const": "3mf",
       "default": "3mf",
+      "enum": [
+        "3mf",
+        "stl"
+      ],
       "title": "Package Format",
       "type": "string"
     },
@@ -42,6 +45,11 @@
       "const": "1.0",
       "default": "1.0",
       "title": "Schema Version",
+      "type": "string"
+    },
+    "slicer": {
+      "default": "Generic slicer",
+      "title": "Slicer",
       "type": "string"
     },
     "slicing": {
@@ -55,9 +63,18 @@
       "title": "Slug",
       "type": "string"
     },
-    "supports_ams": {
-      "default": true,
-      "title": "Supports Ams",
+    "supported_materials": {
+      "items": {
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Supported Materials",
+      "type": "array"
+    },
+    "supports_multi_material": {
+      "default": false,
+      "title": "Supports Multi Material",
       "type": "boolean"
     },
     "technology": {
@@ -74,7 +91,7 @@
     "nozzle_diameter_mm",
     "minimum_wall_mm",
     "minimum_detail_mm",
-    "max_ams_colors"
+    "max_material_slots"
   ],
   "title": "PrinterProfile",
   "type": "object"

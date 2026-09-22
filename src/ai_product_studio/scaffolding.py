@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from ai_product_studio.config import dump_yaml, load_yaml
+from ai_product_studio.configuration import material_configuration
 from ai_product_studio.models import (
     PrinterProfile,
     ProductLineManifest,
@@ -71,9 +72,17 @@ def initialize_studio(
             nozzle_diameter_mm=0.4,
             minimum_wall_mm=1.2,
             minimum_detail_mm=0.8,
-            supports_ams=False,
-            max_ams_colors=1,
+            supports_multi_material=False,
+            max_material_slots=1,
+            supported_materials=["pla", "petg"],
+            slicer="Generic slicer",
         ),
+        force=force,
+        dry_run=dry_run,
+    )
+    _write_manifest(
+        destination / "config" / "material" / "material.yaml",
+        material_configuration(["pla", "petg"]),
         force=force,
         dry_run=dry_run,
     )
@@ -187,9 +196,15 @@ def create_product(
     if destination.exists() and not force:
         raise ScaffoldConflictError(f"Product already exists: {destination}")
 
+    studio = StudioManifest.model_validate(load_yaml(root / "config" / "studio.yaml"))
     _write_manifest(
         destination / "product.yaml",
-        ProductManifest(slug=slug, name=name, summary=summary),
+        ProductManifest(
+            slug=slug,
+            name=name,
+            summary=summary,
+            printer_profile=studio.default_printer,
+        ),
         force=force,
         dry_run=dry_run,
     )

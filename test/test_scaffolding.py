@@ -48,4 +48,5 @@ def test_initializes_new_studio(tmp_path: Path) -> None:
     initialize_studio(destination, "New Studio")
     assert load_yaml(destination / "config" / "studio.yaml")["name"] == "New Studio"
     assert (destination / "config" / "printer" / "generic-fdm.yaml").is_file()
+    assert (destination / "config" / "material" / "material.yaml").is_file()
     assert (destination / "AGENTS.md").is_file()

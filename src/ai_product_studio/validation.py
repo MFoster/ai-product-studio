@@ -8,6 +8,7 @@ from ai_product_studio.assets import verify_asset_manifest
 from ai_product_studio.config import load_yaml
 from ai_product_studio.models import (
     AssetManifest,
+    MaterialConfiguration,
     PrinterProfile,
     ProductLineManifest,
     ProductManifest,
@@ -29,9 +30,36 @@ def _validate_file(path: Path, model: type) -> list[str]:
 
 def validate_studio(root: Path) -> list[str]:
     errors: list[str] = []
-    errors.extend(_validate_file(root / "config" / "studio.yaml", StudioManifest))
+    studio_path = root / "config" / "studio.yaml"
+    errors.extend(_validate_file(studio_path, StudioManifest))
+    material_path = root / "config" / "material" / "material.yaml"
+    if studio_path.is_file():
+        try:
+            configured_path = load_yaml(studio_path).get("material_config")
+            if isinstance(configured_path, str):
+                material_path = root / configured_path
+        except (OSError, ValueError):
+            pass
+    errors.extend(_validate_file(material_path, MaterialConfiguration))
+    material_slugs: set[str] = set()
+    if material_path.is_file():
+        try:
+            material_config = MaterialConfiguration.model_validate(load_yaml(material_path))
+            material_slugs = {material.slug for material in material_config.materials}
+        except (OSError, ValueError, ValidationError):
+            pass
     for profile in sorted((root / "config" / "printer").glob("*.yaml")):
         errors.extend(_validate_file(profile, PrinterProfile))
+        try:
+            printer = PrinterProfile.model_validate(load_yaml(profile))
+            missing = sorted(set(printer.supported_materials) - material_slugs)
+            if missing:
+                errors.append(
+                    f"{profile}: supported materials missing from material config: "
+                    f"{', '.join(missing)}"
+                )
+        except (OSError, ValueError, ValidationError):
+            pass
     for line in sorted((root / "product-line").glob("*")):
         if not line.is_dir():
             continue

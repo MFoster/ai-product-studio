@@ -6,6 +6,11 @@
       "title": "Default Printer",
       "type": "string"
     },
+    "material_config": {
+      "default": "config/material/material.yaml",
+      "title": "Material Config",
+      "type": "string"
+    },
     "name": {
       "title": "Name",
       "type": "string"

@@ -18,8 +18,17 @@ class StudioManifest(StrictModel):
     schema_version: Literal["1.0"] = "1.0"
     name: str
     default_printer: Slug
+    material_config: str = "config/material/material.yaml"
     product_lines: list[Slug] = Field(default_factory=list)
     registry_index: str = ".aps/registry.yaml"
+
+    @field_validator("material_config")
+    @classmethod
+    def require_relative_material_config(cls, value: str) -> str:
+        path = Path(value)
+        if path.is_absolute() or ".." in path.parts:
+            raise ValueError("material_config must be a path inside the studio")
+        return path.as_posix()
 
 
 class ProductLineManifest(StrictModel):
@@ -135,10 +144,62 @@ class PrinterProfile(StrictModel):
     nozzle_diameter_mm: float = Field(gt=0)
     minimum_wall_mm: float = Field(gt=0)
     minimum_detail_mm: float = Field(gt=0)
-    supports_ams: bool = True
-    max_ams_colors: int = Field(ge=1)
-    package_format: Literal["3mf"] = "3mf"
+    supports_multi_material: bool = False
+    max_material_slots: int = Field(ge=1)
+    supported_materials: list[Slug] = Field(
+        default_factory=lambda: ["pla"],
+        min_length=1,
+    )
+    slicer: str = "Generic slicer"
+    package_format: Literal["3mf", "stl"] = "3mf"
     slicing: Literal["manual"] = "manual"
+
+    @field_validator("build_volume_mm")
+    @classmethod
+    def require_positive_build_volume(cls, value: dict[str, float]) -> dict[str, float]:
+        required = {"x", "y", "z"}
+        if set(value) != required or any(value[axis] <= 0 for axis in required):
+            raise ValueError("build_volume_mm must contain positive x, y, and z dimensions")
+        return value
+
+    @model_validator(mode="after")
+    def require_consistent_material_slots(self) -> PrinterProfile:
+        if not self.supports_multi_material and self.max_material_slots != 1:
+            raise ValueError("max_material_slots must be 1 when multi-material support is disabled")
+        return self
+
+
+class TemperatureRange(StrictModel):
+    minimum: int
+    maximum: int
+
+    @model_validator(mode="after")
+    def require_ordered_range(self) -> TemperatureRange:
+        if self.maximum < self.minimum:
+            raise ValueError("maximum temperature must be greater than or equal to minimum")
+        return self
+
+
+class MaterialProfile(StrictModel):
+    slug: Slug
+    name: str
+    nozzle_temperature_c: TemperatureRange
+    bed_temperature_c: TemperatureRange
+    minimum_wall_mm: float = Field(gt=0)
+    shrink_compensation_percent: float = Field(ge=0)
+    notes: list[str] = Field(default_factory=list)
+
+
+class MaterialConfiguration(StrictModel):
+    schema_version: Literal["1.0"] = "1.0"
+    materials: list[MaterialProfile] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def require_unique_materials(self) -> MaterialConfiguration:
+        slugs = [material.slug for material in self.materials]
+        if len(slugs) != len(set(slugs)):
+            raise ValueError("material slugs must be unique")
+        return self
 
 
 class ReleaseManifest(StrictModel):
