@@ -1,0 +1,184 @@
+[
+  {
+    "args": ["--help"],
+    "options": ["--help", "--install-completion", "--show-completion"]
+  },
+  {
+    "args": ["assets", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["workflow", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["registry", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["init", "example", "--help"],
+    "options": ["--dry-run", "--force", "--help", "--name"]
+  },
+  {
+    "args": ["workflow", "advance", "example", "--help"],
+    "options": ["--approval", "--help", "--note", "--root"]
+  },
+  {
+    "args": ["--", "--help"],
+    "options": ["--help", "--install-completion", "--show-completion"]
+  },
+  {
+    "args": ["--", "workflow", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["workflow", "--", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["workflow", "--", "status", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["init", "--dry-run", "--", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["init", "--dry-run", "--name", "--help"],
+    "options": []
+  },
+  {
+    "args": ["assets", "package", "--help"],
+    "options": ["--group", "--help", "--root"]
+  },
+  {
+    "args": ["config", "--help"],
+    "options": ["--help", "--root", "--yes"]
+  },
+  {
+    "args": ["--help"],
+    "options": ["--help", "--install-completion", "--show-completion"]
+  },
+  {
+    "args": ["init", "--help"],
+    "options": ["--dry-run", "--force", "--help", "--name"]
+  },
+  {
+    "args": ["config", "--help"],
+    "options": ["--help", "--root", "--yes"]
+  },
+  {
+    "args": ["validate", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["product-line", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["product-line", "create", "--help"],
+    "options": [
+      "--description",
+      "--dry-run",
+      "--force",
+      "--help",
+      "--name",
+      "--root"
+    ]
+  },
+  {
+    "args": ["variant", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["variant", "create", "--help"],
+    "options": ["--dry-run", "--force", "--help", "--name", "--root", "--theme"]
+  },
+  {
+    "args": ["product", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["product", "create", "--help"],
+    "options": [
+      "--dry-run",
+      "--force",
+      "--help",
+      "--name",
+      "--root",
+      "--summary"
+    ]
+  },
+  {
+    "args": ["registry", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["registry", "check", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["registry", "sync", "--help"],
+    "options": ["--dry-run", "--help", "--root"]
+  },
+  {
+    "args": ["assets", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["assets", "inventory", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["assets", "package", "--help"],
+    "options": ["--group", "--help", "--root"]
+  },
+  {
+    "args": ["assets", "legacy-inventory", "--help"],
+    "options": ["--help", "--output", "--root"]
+  },
+  {
+    "args": ["workflow", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["workflow", "status", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["workflow", "advance", "--help"],
+    "options": ["--approval", "--help", "--note", "--root"]
+  },
+  {
+    "args": ["workflow", "print-result", "--help"],
+    "options": ["--evidence", "--help", "--root"]
+  },
+  {
+    "args": ["schema", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["schema", "write", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["release", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["release", "create", "--help"],
+    "options": ["--approval", "--help", "--notes", "--root"]
+  },
+  {
+    "args": ["slicer", "--help"],
+    "options": ["--help"]
+  },
+  {
+    "args": ["slicer", "list", "--help"],
+    "options": ["--help", "--root"]
+  },
+  {
+    "args": ["slicer", "capture", "--help"],
+    "options": ["--force", "--help", "--name", "--note", "--root", "--slug"]
+  }
+]

@@ -4,12 +4,13 @@ ENV NEXT_TELEMETRY_DISABLED=1
 COPY package.json package-lock.json ./
 COPY apps/aps_cli/package.json apps/aps_cli/package.json
 COPY apps/engineer_ui/package.json apps/engineer_ui/package.json
+COPY packages/contracts/package.json packages/contracts/package.json
 
 FROM manifests AS toolchain-build
 RUN npm ci
 COPY apps/aps_cli/bin apps/aps_cli/bin
 COPY apps/aps_cli/src apps/aps_cli/src
-COPY apps/aps_cli/schema apps/aps_cli/schema
+COPY packages/contracts packages/contracts
 COPY apps/engineer_ui apps/engineer_ui
 COPY scripts/build-toolchain.mjs scripts/build-toolchain.mjs
 COPY .github/agents .github/agents
@@ -29,7 +30,7 @@ ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 APS_STUDIO_ROOT=/studio
 COPY --from=dependencies --chown=node:node /opt/aps/ /opt/aps/
 COPY --from=toolchain-build --chown=node:node /opt/aps/apps/aps_cli/bin/ apps/aps_cli/bin/
 COPY --from=toolchain-build --chown=node:node /opt/aps/apps/aps_cli/src/ apps/aps_cli/src/
-COPY --from=toolchain-build --chown=node:node /opt/aps/apps/aps_cli/schema/ apps/aps_cli/schema/
+COPY --from=toolchain-build --chown=node:node /opt/aps/packages/contracts/ packages/contracts/
 COPY --from=toolchain-build --chown=node:node /opt/aps/apps/aps_cli/capabilities/ apps/aps_cli/capabilities/
 USER node
 WORKDIR /studio

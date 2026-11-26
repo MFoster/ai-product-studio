@@ -1,0 +1,1705 @@
+[
+  {
+    "3D/3dmodel.model": [
+      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}model",
+      {
+        "requiredextensions": "p",
+        "unit": "millimeter",
+        "{http://www.w3.org/XML/1998/namespace}lang": "en-US"
+      },
+      "",
+      [
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "Application"
+          },
+          "BambuStudio-02.09.01.70",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "BambuStudio:3mfVersion"
+          },
+          "1",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "Designer"
+          },
+          "AI Product Studio",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "aps:Generator"
+          },
+          "aps assets package",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "Title"
+          },
+          "Foundry Corner",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "Description"
+          },
+          "Complete corner and service pin",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "aps:GroupId"
+          },
+          "folding-corner",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}metadata",
+          {
+            "name": "aps:Revision"
+          },
+          "v1",
+          []
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}resources",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "4",
+                "type": "model",
+                "name": "Wall (1)"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}components",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}component",
+                      {
+                        "objectid": "2",
+                        "transform": "1 0 0 0 1 0 0 0 1 0 0 0",
+                        "{http://schemas.microsoft.com/3dmanufacturing/production/2015/06}path": "/3D/Objects/object_2.model"
+                      },
+                      "",
+                      []
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}component",
+                      {
+                        "objectid": "3",
+                        "transform": "1 0 0 0 1 0 0 0 1 0 0 0",
+                        "{http://schemas.microsoft.com/3dmanufacturing/production/2015/06}path": "/3D/Objects/object_3.model"
+                      },
+                      "",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "6",
+                "type": "model",
+                "name": "Service Pin"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}components",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}component",
+                      {
+                        "objectid": "5",
+                        "transform": "1 0 0 0 1 0 0 0 1 0 0 0",
+                        "{http://schemas.microsoft.com/3dmanufacturing/production/2015/06}path": "/3D/Objects/object_5.model"
+                      },
+                      "",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "9",
+                "type": "model",
+                "name": "Wall (2)"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}components",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}component",
+                      {
+                        "objectid": "7",
+                        "transform": "1 0 0 0 1 0 0 0 1 0 0 0",
+                        "{http://schemas.microsoft.com/3dmanufacturing/production/2015/06}path": "/3D/Objects/object_7.model"
+                      },
+                      "",
+                      []
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}component",
+                      {
+                        "objectid": "8",
+                        "transform": "1 0 0 0 1 0 0 0 1 0 0 0",
+                        "{http://schemas.microsoft.com/3dmanufacturing/production/2015/06}path": "/3D/Objects/object_8.model"
+                      },
+                      "",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}build",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}item",
+              {
+                "objectid": "4",
+                "transform": "1 0 0 0 1 0 0 0 1 -7 -9 5",
+                "printable": "1"
+              },
+              "",
+              []
+            ],
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}item",
+              {
+                "objectid": "6",
+                "transform": "1 0 0 0 1 0 0 0 1 151 5 0",
+                "printable": "1"
+              },
+              "",
+              []
+            ],
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}item",
+              {
+                "objectid": "9",
+                "transform": "1 0 0 0 1 0 0 0 1 257 -9 5",
+                "printable": "1"
+              },
+              "",
+              []
+            ]
+          ]
+        ]
+      ]
+    ],
+    "3D/Objects/object_2.model": [
+      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}model",
+      {
+        "unit": "millimeter"
+      },
+      "",
+      [
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}resources",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "2",
+                "type": "model",
+                "name": "Wall (1) - Ash Stone"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}mesh",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertices",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "12",
+                            "y": "14",
+                            "z": "-5"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "12",
+                            "y": "174",
+                            "z": "-5"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "152",
+                            "y": "14",
+                            "z": "-5"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "12",
+                            "y": "14",
+                            "z": "5"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangles",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "1",
+                            "v3": "2"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "2",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "3",
+                            "v3": "1"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "2",
+                            "v2": "1",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}build",
+          {},
+          "",
+          []
+        ]
+      ]
+    ],
+    "3D/Objects/object_3.model": [
+      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}model",
+      {
+        "unit": "millimeter"
+      },
+      "",
+      [
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}resources",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "3",
+                "type": "model",
+                "name": "Wall (1) - Charcoal"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}mesh",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertices",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "15",
+                            "y": "17",
+                            "z": "-4"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "15",
+                            "y": "27",
+                            "z": "-4"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "25",
+                            "y": "17",
+                            "z": "-4"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "15",
+                            "y": "17",
+                            "z": "-1"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangles",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "1",
+                            "v3": "2"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "2",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "3",
+                            "v3": "1"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "2",
+                            "v2": "1",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}build",
+          {},
+          "",
+          []
+        ]
+      ]
+    ],
+    "3D/Objects/object_5.model": [
+      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}model",
+      {
+        "unit": "millimeter"
+      },
+      "",
+      [
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}resources",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "5",
+                "type": "model",
+                "name": "Service Pin - Charcoal"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}mesh",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertices",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "0",
+                            "y": "0",
+                            "z": "0"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "0",
+                            "y": "2",
+                            "z": "0"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "2",
+                            "y": "0",
+                            "z": "0"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "0",
+                            "y": "0",
+                            "z": "20"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangles",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "1",
+                            "v3": "2"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "2",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "3",
+                            "v3": "1"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "2",
+                            "v2": "1",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}build",
+          {},
+          "",
+          []
+        ]
+      ]
+    ],
+    "3D/Objects/object_7.model": [
+      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}model",
+      {
+        "unit": "millimeter"
+      },
+      "",
+      [
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}resources",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "7",
+                "type": "model",
+                "name": "Wall (2) - Ash Stone"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}mesh",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertices",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "12",
+                            "y": "14",
+                            "z": "-5"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "12",
+                            "y": "174",
+                            "z": "-5"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "152",
+                            "y": "14",
+                            "z": "-5"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "12",
+                            "y": "14",
+                            "z": "5"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangles",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "1",
+                            "v3": "2"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "2",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "3",
+                            "v3": "1"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "2",
+                            "v2": "1",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}build",
+          {},
+          "",
+          []
+        ]
+      ]
+    ],
+    "3D/Objects/object_8.model": [
+      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}model",
+      {
+        "unit": "millimeter"
+      },
+      "",
+      [
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}resources",
+          {},
+          "",
+          [
+            [
+              "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}object",
+              {
+                "id": "8",
+                "type": "model",
+                "name": "Wall (2) - Charcoal"
+              },
+              "",
+              [
+                [
+                  "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}mesh",
+                  {},
+                  "",
+                  [
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertices",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "15",
+                            "y": "17",
+                            "z": "-4"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "15",
+                            "y": "27",
+                            "z": "-4"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "25",
+                            "y": "17",
+                            "z": "-4"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}vertex",
+                          {
+                            "x": "15",
+                            "y": "17",
+                            "z": "-1"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangles",
+                      {},
+                      "",
+                      [
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "1",
+                            "v3": "2"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "2",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "0",
+                            "v2": "3",
+                            "v3": "1"
+                          },
+                          "",
+                          []
+                        ],
+                        [
+                          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}triangle",
+                          {
+                            "v1": "2",
+                            "v2": "1",
+                            "v3": "3"
+                          },
+                          "",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "{http://schemas.microsoft.com/3dmanufacturing/core/2015/02}build",
+          {},
+          "",
+          []
+        ]
+      ]
+    ],
+    "3D/_rels/3dmodel.model.rels": [
+      "{http://schemas.openxmlformats.org/package/2006/relationships}Relationships",
+      {},
+      "",
+      [
+        [
+          "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
+          {
+            "Id": "rel-2",
+            "Target": "/3D/Objects/object_2.model",
+            "Type": "http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
+          {
+            "Id": "rel-3",
+            "Target": "/3D/Objects/object_3.model",
+            "Type": "http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
+          {
+            "Id": "rel-5",
+            "Target": "/3D/Objects/object_5.model",
+            "Type": "http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
+          {
+            "Id": "rel-7",
+            "Target": "/3D/Objects/object_7.model",
+            "Type": "http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
+          {
+            "Id": "rel-8",
+            "Target": "/3D/Objects/object_8.model",
+            "Type": "http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"
+          },
+          "",
+          []
+        ]
+      ]
+    ],
+    "Metadata/aps_group.json": {
+      "schema_version": "1.0",
+      "product": "model",
+      "group": {
+        "id": "folding-corner",
+        "name": "Foundry Corner",
+        "revision": "v1",
+        "description": "Complete corner and service pin",
+        "package": "package/v1/foundry-corner.3mf",
+        "materials": [
+          {
+            "id": "stone",
+            "name": "Ash Stone",
+            "color": "#BBBBBB",
+            "material": "pla"
+          },
+          {
+            "id": "metal",
+            "name": "Charcoal",
+            "color": "#222222",
+            "material": "pla"
+          }
+        ],
+        "parts": [
+          {
+            "id": "wall",
+            "name": "Wall",
+            "quantity": 2,
+            "meshes": [
+              {
+                "asset": "export/stl/body.stl",
+                "material": "stone",
+                "sha256": "7328de6d8e3e88464d0a286710577786f88db02bfc5ff6a0bc8e7d463b92504a"
+              },
+              {
+                "asset": "export/stl/color.stl",
+                "material": "metal",
+                "sha256": "fc53740c2fd15fccb27d80e16df13ecd9a4131a09b6a7e1b4e62174893216cdf"
+              }
+            ]
+          },
+          {
+            "id": "pin",
+            "name": "Service Pin",
+            "quantity": 1,
+            "meshes": [
+              {
+                "asset": "export/stl/pin.stl",
+                "material": "metal",
+                "sha256": "82d9e93629441522fa4c48f89ded360325ce655f17dc71b152d2f58c488bedad"
+              }
+            ]
+          }
+        ],
+        "layout": {
+          "spacing_mm": 6,
+          "margin_mm": 5,
+          "orientation": "preserve-source"
+        }
+      },
+      "printer": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 4,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      },
+      "plates": [
+        {
+          "id": 1,
+          "name": "Foundry Corner - Plate 1",
+          "origin_mm": [0, 0, 0],
+          "instances": [
+            {
+              "part_id": "wall",
+              "copy": 1,
+              "object_id": 4,
+              "name": "Wall (1)",
+              "translation_mm": [-7, -9, 5],
+              "bounds_on_plate_mm": [
+                [5, 5, 0],
+                [145, 165, 10]
+              ],
+              "meshes": [
+                {
+                  "asset": "export/stl/body.stl",
+                  "material": "stone",
+                  "sha256": "7328de6d8e3e88464d0a286710577786f88db02bfc5ff6a0bc8e7d463b92504a",
+                  "object_id": 2,
+                  "name": "Wall (1) - Ash Stone",
+                  "triangles": 4,
+                  "project_filament": 1
+                },
+                {
+                  "asset": "export/stl/color.stl",
+                  "material": "metal",
+                  "sha256": "fc53740c2fd15fccb27d80e16df13ecd9a4131a09b6a7e1b4e62174893216cdf",
+                  "object_id": 3,
+                  "name": "Wall (1) - Charcoal",
+                  "triangles": 4,
+                  "project_filament": 2
+                }
+              ]
+            },
+            {
+              "part_id": "pin",
+              "copy": 1,
+              "object_id": 6,
+              "name": "Service Pin",
+              "translation_mm": [151, 5, 0],
+              "bounds_on_plate_mm": [
+                [151, 5, 0],
+                [153, 7, 20]
+              ],
+              "meshes": [
+                {
+                  "asset": "export/stl/pin.stl",
+                  "material": "metal",
+                  "sha256": "82d9e93629441522fa4c48f89ded360325ce655f17dc71b152d2f58c488bedad",
+                  "object_id": 5,
+                  "name": "Service Pin - Charcoal",
+                  "triangles": 4,
+                  "project_filament": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Foundry Corner - Plate 2",
+          "origin_mm": [264, 0, 0],
+          "instances": [
+            {
+              "part_id": "wall",
+              "copy": 2,
+              "object_id": 9,
+              "name": "Wall (2)",
+              "translation_mm": [257, -9, 5],
+              "bounds_on_plate_mm": [
+                [5, 5, 0],
+                [145, 165, 10]
+              ],
+              "meshes": [
+                {
+                  "asset": "export/stl/body.stl",
+                  "material": "stone",
+                  "sha256": "7328de6d8e3e88464d0a286710577786f88db02bfc5ff6a0bc8e7d463b92504a",
+                  "object_id": 7,
+                  "name": "Wall (2) - Ash Stone",
+                  "triangles": 4,
+                  "project_filament": 1
+                },
+                {
+                  "asset": "export/stl/color.stl",
+                  "material": "metal",
+                  "sha256": "fc53740c2fd15fccb27d80e16df13ecd9a4131a09b6a7e1b4e62174893216cdf",
+                  "object_id": 8,
+                  "name": "Wall (2) - Charcoal",
+                  "triangles": 4,
+                  "project_filament": 2
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "validation": "unsliced-model-layout",
+      "limitations": [
+        "Layout reserves bounding-box gaps/margins, not support/brim/purge space",
+        "Source orientations are preserved, not physically qualified",
+        "Select actual printer/process/filament presets and AMS trays before slicing",
+        "No slicing, fit, assembly, load or physical-print qualification is asserted"
+      ]
+    },
+    "Metadata/model_settings.config": [
+      "config",
+      {},
+      "",
+      [
+        [
+          "object",
+          {
+            "id": "4"
+          },
+          "",
+          [
+            [
+              "metadata",
+              {
+                "key": "name",
+                "value": "Wall (1)"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "extruder",
+                "value": "1"
+              },
+              "",
+              []
+            ],
+            [
+              "part",
+              {
+                "id": "2",
+                "subtype": "normal_part"
+              },
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "name",
+                    "value": "Wall (1) - Ash Stone"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "extruder",
+                    "value": "1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "matrix",
+                    "value": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "source_file",
+                    "value": "body.stl"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ],
+            [
+              "part",
+              {
+                "id": "3",
+                "subtype": "normal_part"
+              },
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "name",
+                    "value": "Wall (1) - Charcoal"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "extruder",
+                    "value": "2"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "matrix",
+                    "value": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "source_file",
+                    "value": "color.stl"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "object",
+          {
+            "id": "6"
+          },
+          "",
+          [
+            [
+              "metadata",
+              {
+                "key": "name",
+                "value": "Service Pin"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "extruder",
+                "value": "2"
+              },
+              "",
+              []
+            ],
+            [
+              "part",
+              {
+                "id": "5",
+                "subtype": "normal_part"
+              },
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "name",
+                    "value": "Service Pin - Charcoal"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "extruder",
+                    "value": "2"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "matrix",
+                    "value": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "source_file",
+                    "value": "pin.stl"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "plate",
+          {},
+          "",
+          [
+            [
+              "metadata",
+              {
+                "key": "plater_id",
+                "value": "1"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "plater_name",
+                "value": "Foundry Corner - Plate 1"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "locked",
+                "value": "false"
+              },
+              "",
+              []
+            ],
+            [
+              "model_instance",
+              {},
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "object_id",
+                    "value": "4"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "instance_id",
+                    "value": "0"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "identify_id",
+                    "value": "4"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ],
+            [
+              "model_instance",
+              {},
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "object_id",
+                    "value": "6"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "instance_id",
+                    "value": "0"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "identify_id",
+                    "value": "6"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "object",
+          {
+            "id": "9"
+          },
+          "",
+          [
+            [
+              "metadata",
+              {
+                "key": "name",
+                "value": "Wall (2)"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "extruder",
+                "value": "1"
+              },
+              "",
+              []
+            ],
+            [
+              "part",
+              {
+                "id": "7",
+                "subtype": "normal_part"
+              },
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "name",
+                    "value": "Wall (2) - Ash Stone"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "extruder",
+                    "value": "1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "matrix",
+                    "value": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "source_file",
+                    "value": "body.stl"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ],
+            [
+              "part",
+              {
+                "id": "8",
+                "subtype": "normal_part"
+              },
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "name",
+                    "value": "Wall (2) - Charcoal"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "extruder",
+                    "value": "2"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "matrix",
+                    "value": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "source_file",
+                    "value": "color.stl"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "plate",
+          {},
+          "",
+          [
+            [
+              "metadata",
+              {
+                "key": "plater_id",
+                "value": "2"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "plater_name",
+                "value": "Foundry Corner - Plate 2"
+              },
+              "",
+              []
+            ],
+            [
+              "metadata",
+              {
+                "key": "locked",
+                "value": "false"
+              },
+              "",
+              []
+            ],
+            [
+              "model_instance",
+              {},
+              "",
+              [
+                [
+                  "metadata",
+                  {
+                    "key": "object_id",
+                    "value": "9"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "instance_id",
+                    "value": "0"
+                  },
+                  "",
+                  []
+                ],
+                [
+                  "metadata",
+                  {
+                    "key": "identify_id",
+                    "value": "9"
+                  },
+                  "",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "Metadata/project_settings.config": {
+      "printer_settings_id": "",
+      "print_settings_id": "",
+      "printer_model": "",
+      "nozzle_diameter": ["0.4"],
+      "printable_height": "250.0",
+      "printable_area": ["0x0", "220.0x0", "220.0x220.0", "0x220.0"],
+      "inherits_group": ["", "", "", ""],
+      "different_settings_to_system": ["", "", "", ""],
+      "filament_is_support": ["0", "0"],
+      "filament_colour": ["#BBBBBB", "#222222"],
+      "filament_type": ["PLA", "PLA"],
+      "filament_settings_id": ["Generic PLA", "Generic PLA"],
+      "filament_diameter": ["1.75", "1.75"]
+    },
+    "[Content_Types].xml": [
+      "{http://schemas.openxmlformats.org/package/2006/content-types}Types",
+      {},
+      "",
+      [
+        [
+          "{http://schemas.openxmlformats.org/package/2006/content-types}Default",
+          {
+            "Extension": "rels",
+            "ContentType": "application/vnd.openxmlformats-package.relationships+xml"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/content-types}Default",
+          {
+            "Extension": "model",
+            "ContentType": "application/vnd.ms-package.3dmanufacturing-3dmodel+xml"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/content-types}Default",
+          {
+            "Extension": "config",
+            "ContentType": "application/octet-stream"
+          },
+          "",
+          []
+        ],
+        [
+          "{http://schemas.openxmlformats.org/package/2006/content-types}Default",
+          {
+            "Extension": "json",
+            "ContentType": "application/json"
+          },
+          "",
+          []
+        ]
+      ]
+    ],
+    "_rels/.rels": [
+      "{http://schemas.openxmlformats.org/package/2006/relationships}Relationships",
+      {},
+      "",
+      [
+        [
+          "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship",
+          {
+            "Id": "rel-model",
+            "Target": "/3D/3dmodel.model",
+            "Type": "http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"
+          },
+          "",
+          []
+        ]
+      ]
+    ]
+  }
+]

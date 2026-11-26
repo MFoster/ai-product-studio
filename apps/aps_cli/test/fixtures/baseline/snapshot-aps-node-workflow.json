@@ -1,0 +1,114 @@
+[
+  {
+    "AGENTS.md": "# Model product instructions\n\nRead `product.yaml`, `workflow.yaml`, `assets.yaml` when present, and all parent\n`AGENTS.md` files before changing this product.\nKeep canonical editable files in `source/`, generated meshes in `export/`, slicer\npackages in `package/`, renders in `preview/`, and immutable versions in `release/`.\nNever mark a physical print as passed without recorded test-print evidence.\n",
+    "assets.yaml": {
+      "product": "model",
+      "generated_at": "2026-01-01T00:00:00Z",
+      "assets": [
+        {
+          "path": "source/model.blend",
+          "kind": "source",
+          "format": "blend",
+          "role": "source",
+          "sha256": "abc",
+          "size_bytes": 6
+        },
+        {
+          "path": "preview/front.png",
+          "kind": "preview",
+          "format": "png",
+          "role": "preview",
+          "sha256": "def",
+          "size_bytes": 5,
+          "release_eligible": false
+        }
+      ]
+    },
+    "export/": null,
+    "export/stl/": null,
+    "package/": null,
+    "package/model.3mf": "package",
+    "preview/": null,
+    "preview/back.png": "back",
+    "preview/front.png": "front",
+    "product.yaml": {
+      "schema_version": "1.0",
+      "slug": "model",
+      "name": "Model",
+      "summary": "",
+      "intended_use": "",
+      "dimensions_mm": {},
+      "printer_profile": "generic-fdm",
+      "components": [],
+      "output_formats": ["blend", "stl", "3mf", "png"]
+    },
+    "release/": null,
+    "release/v1/": null,
+    "release/v1/release.yaml": {
+      "schema_version": "1.0",
+      "product": "model",
+      "version": "v1",
+      "created_at": "2026-11-26T04:46:00.342217Z",
+      "printer_profile": "generic-fdm",
+      "asset_hashes": {
+        "source/model.blend": "abc"
+      },
+      "validations": [
+        "asset checksums recorded",
+        "workflow gates satisfied",
+        "physical print passed"
+      ],
+      "physical_print_status": "passed",
+      "notes": "released"
+    },
+    "review/": null,
+    "script/": null,
+    "source/": null,
+    "source/model.blend": "source",
+    "workflow.yaml": {
+      "schema_version": "1.0",
+      "product": "model",
+      "current_stage": "release",
+      "approvals": {
+        "review": "review-1",
+        "print-validation": "review-2",
+        "physical-print": "print-2",
+        "release": "release-1"
+      },
+      "blockers": [],
+      "physical_print_status": "passed",
+      "history": [
+        {
+          "stage": "design",
+          "at": "2026-11-26T04:45:55.856981Z",
+          "note": "brief accepted"
+        },
+        {
+          "stage": "review",
+          "at": "2026-11-26T04:45:56.883632Z",
+          "note": "review"
+        },
+        {
+          "stage": "print-validation",
+          "at": "2026-11-26T04:45:57.587238Z",
+          "note": "ready"
+        },
+        {
+          "stage": "print-validation",
+          "at": "2026-11-26T04:45:58.911138Z",
+          "note": "Physical print failed: print-1"
+        },
+        {
+          "stage": "print-validation",
+          "at": "2026-11-26T04:45:59.608128Z",
+          "note": "Physical print passed: print-2"
+        },
+        {
+          "stage": "release",
+          "at": "2026-11-26T04:46:00.341086Z",
+          "note": "Released v1"
+        }
+      ]
+    }
+  }
+]

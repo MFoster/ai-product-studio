@@ -1,0 +1,413 @@
+[
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# AI Product Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": {
+          "$number": "Infinity"
+        },
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "AI Product Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# AI Product Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": {
+          "$number": "NaN"
+        },
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "AI Product Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# AI Product Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": {
+          "$number": "Infinity"
+        },
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "AI Product Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# AI Product Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "AI Product Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# AI Product Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "AI Product Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  }
+]

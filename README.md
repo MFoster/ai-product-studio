@@ -25,7 +25,7 @@ package, slice, and physical-print validation remain separate evidence levels.
 ## Requirements
 
 - Node.js 22.18 or newer and npm.
-- Python 3.12 or newer for the legacy CLI, Blender scripts, and parity tests.
+- Python 3 for optional Spec Kit tooling; Blender uses its embedded Python SDK.
 - Blender for model creation and optional headless validation.
 - Bambu Studio or another compatible slicer for plate preparation and review.
 
@@ -141,56 +141,57 @@ export PATH="$PWD/node_modules/.bin:$PATH"
 aps --help
 ```
 
-Install the Python oracle for parity tests and legacy development:
+The CLI, UI, shared contracts, tests, and release pipeline run on Node only:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install -e '.[dev]'
-PATH="$PWD/.venv/bin:$PATH" npm test
+npm test
+npm run typecheck
 ```
 
 ## Application workspaces
 
 The root npm workspace contains `apps/engineer_ui`, the local inventory UI,
-and `apps/aps_cli`, published as `@mfoster/ai-product-studio`. The legacy Python implementation remains at
-the repository root as a rollback option and differential test oracle.
+and `apps/aps_cli`, published as `@mfoster/ai-product-studio`.
+`packages/contracts` is the private `@mfoster/aps-contracts` workspace: it owns
+the canonical JSON Schemas and shared TypeScript declarations used by both apps.
+It is bundled into the toolchain release, not published as a separate dependency.
 
 ```bash
 npm run dev
 npm run build
 npm run aps -- --help
-npm run aps:python -- --help
 npm run test --workspace=engineer_ui
 npm run test --workspace=@mfoster/ai-product-studio
 ```
 
-The root `test`, `lint`, `format:check`, and `typecheck` scripts run both
+The root `test`, `lint`, `format:check`, and `typecheck` scripts run all
 workspaces; `build` targets the UI. Use `--workspace=engineer_ui` or
-`--workspace=@mfoster/ai-product-studio` to select an app. The CLI's Python source, package
-configuration, and tests remain at the repository root.
+`--workspace=@mfoster/ai-product-studio` to select an app.
 
 `npm run aps --` and `./node_modules/.bin/aps` use Node without Python.
-`npm run aps:node --` and `aps-node` are aliases; `npm run aps:python --`
-requires an installed Python CLI. Activating `.venv` may put the legacy `aps`
-ahead of the Node executable on `PATH`; use `npm run aps --` to select Node
-unambiguously. `npm run test:node --workspace=@mfoster/ai-product-studio`
-compares behavior against Python; set `APS_PYTHON` to its interpreter if it is
-not available in `.venv` or as `python3`. The differential suite covers the
-command families but does not prove complete parity, including exact help and
-error formatting. Shell completion installs for Bash, Zsh, Fish, and PowerShell.
-Like the Python installer, PowerShell installation attempts to set the current
-user's execution policy to `Unrestricted`. Like Python, numeric prompts accept
+`npm run aps:node --` and `aps-node` are aliases.
+`npm run test:node --workspace=@mfoster/ai-product-studio` runs independent
+regression expectations captured before retiring the legacy CLI, plus
+Node-owned framework checks. Terminal tests use the POSIX `script` utility.
+Shell completion installs for Bash, Zsh, Fish, and PowerShell.
+PowerShell installation attempts to set the current user's execution policy
+to `Unrestricted`. Numeric prompts retain compatibility with
 non-finite float values; do not use them for printable dimensions.
 On Windows, the Node CLI also rejects root-relative manifest paths to prevent
 them from escaping the studio or product directory.
-For filenames ending in a dot, inventory roles follow Python 3.14's `pathlib`
-behavior; Python 3.12 and 3.13 retain the trailing dot in the role.
-On POSIX, non-strict symlink-loop resolution also follows Python 3.14; earlier
-Python versions may reject the same paths.
-The legacy oracle pins Typer and Pydantic to the tested versions because its
-interactive parameter inspection and generated schemas depend on their APIs.
+Trailing-dot filenames and non-strict POSIX symlink-loop resolution retain the
+established CLI semantics.
 Native Windows qualification is deferred; use the Linux containers on Windows.
 Windows-specific helper tests remain available for future porting work.
+
+The Blender SDK under `template/blender/` and Spec Kit's Python helpers remain
+available. Their Python dependencies are optional and are not installed by
+normal npm checks or releases. For SDK changes, use Python 3.12+ with:
+
+```bash
+uv run --group blender pytest -q
+uv run --group blender ruff check template/blender test/test_bambu_package.py
+```
 
 ## Docker
 
@@ -370,7 +371,7 @@ clock-tower
 | `aps slicer capture`          | Record the slicer settings from a saved slicer project             |
 | `aps slicer list`             | List the slice profiles recorded for a product                     |
 | `aps release create`          | Create an immutable release manifest                               |
-| `aps schema write`            | Regenerate JSON Schemas from the typed models                      |
+| `aps schema write`            | Copy canonical JSON Schemas from the shared contracts package      |
 | `aps validate`                | Validate manifests, assets, registry state, and skill metadata     |
 
 Every command supports `--help`:
@@ -844,7 +845,8 @@ Run it before handoff, print validation, and release.
 
 ## Generate JSON Schemas
 
-The Node CLI uses bundled JSON Schema snapshots and additional runtime checks.
+The Node CLI uses canonical JSON Schemas from the shared contracts package and
+additional runtime checks.
 Write the bundled schemas into a studio with:
 
 ```bash
@@ -852,8 +854,10 @@ aps schema write
 ```
 
 Schemas are written to `schema/`. Stale generated schema files are removed.
-When changing manifest models, update the bundled snapshots under
-`apps/aps_cli/schema/` and run the Python differential schema test.
+When changing manifest contracts, update `packages/contracts/schema/` and the
+shared declarations in `packages/contracts/index.d.ts`, then run the contracts,
+CLI, and UI checks. Review checksum and regression fixture changes deliberately;
+they are independent expectations, not outputs regenerated from the tested CLI.
 
 ## Safe command behavior
 

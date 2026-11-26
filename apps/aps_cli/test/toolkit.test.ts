@@ -112,7 +112,7 @@ test("sync preflights local edits, unowned files, and source collisions", (t) =>
   assert.throws(() => syncToolkit(root, false, resources), /collision/);
 });
 
-test("new toolkit commands are discoverable independently of the Python oracle", () => {
+test("toolkit commands are discoverable alongside established command families", () => {
   assert.ok(
     completionCandidates([], "tool").some((entry) => entry.value === "toolkit"),
   );

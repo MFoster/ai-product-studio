@@ -17,7 +17,6 @@
   "files": [
     "bin",
     "src",
-    "schema",
     "capabilities",
     "dist/ui",
     "README.md",
@@ -31,18 +30,22 @@
   },
   "scripts": {
     "build": "node ../../scripts/build-toolchain.mjs",
-    "prepack": "npm run build",
+    "prepack": "npm run build && node ../../scripts/bundle-contracts.mjs",
+    "postpack": "node ../../scripts/bundle-contracts.mjs --clean",
     "aps": "cd ../.. && node apps/aps_cli/bin/aps-node.js",
     "aps:node": "cd ../.. && node apps/aps_cli/bin/aps-node.js",
-    "aps:python": "cd ../.. && python3 -m ai_product_studio",
     "test:node": "tsx --test test/*.test.ts",
     "typecheck": "tsc --noEmit",
     "typecheck:node": "tsc --noEmit",
-    "test": "npm run test:node && cd ../.. && pytest -q",
-    "lint": "npm run typecheck:node && cd ../.. && ruff check .",
-    "format:check": "prettier --check bin src test package.json tsconfig.json && cd ../.. && ruff format --check ."
+    "test": "npm run test:node",
+    "lint": "npm run typecheck:node",
+    "format:check": "prettier --check bin src test package.json tsconfig.json"
   },
+  "bundleDependencies": [
+    "@mfoster/aps-contracts"
+  ],
   "dependencies": {
+    "@mfoster/aps-contracts": "0.1.0",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "@react-three/drei": "^10.7.9",
@@ -58,6 +61,7 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
+    "@xmldom/xmldom": "^0.9.8",
     "@types/node": "^22.0.0",
     "@types/yazl": "^3.3.0",
     "@types/yauzl": "^2.10.3",

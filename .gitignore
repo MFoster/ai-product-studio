@@ -17,6 +17,8 @@ build/
 
 # Local generated output
 /result.json
+# Canonical schemas live in packages/contracts; root copies are generated.
+/schema/
 
 # Registry entries are generated from studio-local sources. Framework-owned
 # capabilities are explicitly allowed; add new generic capabilities here.

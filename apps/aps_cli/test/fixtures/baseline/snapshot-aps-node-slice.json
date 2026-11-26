@@ -1,0 +1,33 @@
+[
+  {
+    "0-20mm-standard.3mf": "PK\u0003\u0004\u0014\u0000\u0000\u0000\u0000\u0000ýy]�����\u0000\u0000\u0000�\u0000\u0000\u0000 \u0000\u0000\u0000Metadata/project_settings.config{\"printer_model\":\"X2D\",\"print_settings_id\":\"0.20mm Standard\",\"filament_type\":[\"PLA\"],\"nozzle_diameter\":[\"0.4\",\"0.6\"],\"layer_height\":\"0.2\",\"wall_loops\":\"2\",\"enable_support\":\"1\",\"integral_float\":1.0,\"small_float\":0.00001,\"nested\":{\"c\":\"snow\",\"a\":2}}PK\u0001\u0002\u0014\u0003\u0014\u0000\u0000\u0000\u0000\u0000ýy]�����\u0000\u0000\u0000�\u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0001\u0000\u0000\u0000\u0000Metadata/project_settings.configPK\u0005\u0006\u0000\u0000\u0000\u0000\u0001\u0000\u0001\u0000N\u0000\u0000\u00005\u0001\u0000\u0000\u0000\u0000",
+    "0-20mm-standard.settings.json": "{\n  \"enable_support\": \"1\",\n  \"filament_type\": [\n    \"PLA\"\n  ],\n  \"integral_float\": 1.0,\n  \"layer_height\": \"0.2\",\n  \"nested\": {\n    \"a\": 2,\n    \"c\": \"snow\"\n  },\n  \"nozzle_diameter\": [\n    \"0.4\",\n    \"0.6\"\n  ],\n  \"print_settings_id\": \"0.20mm Standard\",\n  \"printer_model\": \"X2D\",\n  \"small_float\": 1e-05,\n  \"wall_loops\": \"2\"\n}\n",
+    "0-20mm-standard.yaml": {
+      "schema_version": "1.0",
+      "slug": "0-20mm-standard",
+      "name": "0.20mm Standard",
+      "product": "model",
+      "printer_profile": "generic-fdm",
+      "evidence": "captured",
+      "recorded_at": "<timestamp>",
+      "source": "slice/0-20mm-standard.3mf",
+      "source_sha256": "14718f76cd902d1ea577d236ba51e31cd0f78a04500bd643f215a2aee440f990",
+      "settings_file": "slice/0-20mm-standard.settings.json",
+      "settings_sha256": "1bfd90d1b16675316e1a2e7acb0ca6ca0d0786a7e8c74be6710e246221240502",
+      "slicer": "Bambu Studio",
+      "printer_model": "X2D",
+      "print_settings_id": "0.20mm Standard",
+      "filament_settings_ids": [],
+      "filament_types": ["PLA"],
+      "nozzle_diameter_mm": 0.4,
+      "layer_height_mm": 0.2,
+      "first_layer_height_mm": 0.2,
+      "wall_loops": 2,
+      "support_enabled": true,
+      "notes": [
+        "Project declares multiple nozzle diameters: 0.4, 0.6",
+        "First slice"
+      ]
+    }
+  }
+]

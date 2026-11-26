@@ -25,7 +25,8 @@ failures remain visible.
 
 Keep behavior changes focused, test them, and preserve existing interfaces.
 Use the `aps` CLI for studio operations and run `aps validate` for structural
-or release work. Follow documented Python and UI development checks.
+or release work. Follow documented Node workspace checks and optional Python
+checks when changing the Blender SDK.
 
 ## Governance
 

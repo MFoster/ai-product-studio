@@ -1,0 +1,23 @@
+[
+  {
+    "schema_version": "1.0",
+    "assets": [
+      {
+        "path": "Widget_model.BLEND",
+        "format": "blend",
+        "size_bytes": 13,
+        "sha256": "9d56ce7005086f031d256a1ec7cf2f0d5e5c8df2bd721f4d76fd7d80d5f85170",
+        "candidate_product_line": "widget",
+        "action": "unmanaged"
+      },
+      {
+        "path": "widget-part.stl",
+        "format": "stl",
+        "size_bytes": 12,
+        "sha256": "cd16eff64787ededb6812fc5fb7fd44fbfb0306ade187e36a2662effb49bec10",
+        "candidate_product_line": "widget",
+        "action": "unmanaged"
+      }
+    ]
+  }
+]

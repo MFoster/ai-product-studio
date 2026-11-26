@@ -14,7 +14,14 @@ apps/aps_cli/*
 !apps/aps_cli/package.json
 !apps/aps_cli/bin
 !apps/aps_cli/src
-!apps/aps_cli/schema
+!packages
+packages/*
+!packages/contracts
+packages/contracts/*
+!packages/contracts/package.json
+!packages/contracts/index.js
+!packages/contracts/index.d.ts
+!packages/contracts/schema
 apps/engineer_ui/*
 !apps/engineer_ui/package.json
 !apps/engineer_ui/app

@@ -1,6 +1,12 @@
-export type Json =
-  null | boolean | number | string | Json[] | { [key: string]: Json };
-export type RecordData = { [key: string]: Json };
+import type { Json, RecordData, ModelGroup } from "@mfoster/aps-contracts";
+export type {
+  Json,
+  RecordData,
+  GroupMaterial,
+  GroupMesh,
+  GroupPart,
+  ModelGroup,
+} from "@mfoster/aps-contracts";
 
 export interface Finding {
   severity: "error" | "warning";
@@ -51,41 +57,6 @@ export interface GroupPreview {
   image: Asset;
   width: number;
   height: number;
-}
-
-export interface GroupMaterial {
-  id: string;
-  name: string;
-  color: string;
-  material: string;
-}
-
-export interface GroupMesh {
-  asset: string;
-  material: string;
-  sha256: string;
-}
-
-export interface GroupPart {
-  id: string;
-  name: string;
-  quantity: number;
-  meshes: GroupMesh[];
-}
-
-export interface ModelGroup {
-  id: string;
-  name: string;
-  revision: string;
-  description: string;
-  package: string;
-  materials: GroupMaterial[];
-  parts: GroupPart[];
-  layout: {
-    spacing_mm: number;
-    margin_mm: number;
-    orientation: "preserve-source";
-  };
 }
 
 export interface Variant {

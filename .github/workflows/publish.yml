@@ -37,11 +37,6 @@ jobs:
           npm pkg set "apsReleaseCommit=$GITHUB_SHA" --workspace=@mfoster/ai-product-studio
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
       - run: npm ci
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.14"
-      - name: Install differential oracle
-        run: python -m pip install -e '.[dev]'
       - name: Test studio synchronization
         run: npm test
       - name: Typecheck workspaces

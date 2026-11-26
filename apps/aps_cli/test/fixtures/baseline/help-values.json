@@ -1,0 +1,12 @@
+[
+  {
+    "args": ["init", "--dry-run", "--", "--help"],
+    "status": 0,
+    "stdout": "Would initialize <ROOT>--help\n"
+  },
+  {
+    "args": ["init", "--dry-run", "--name", "--help"],
+    "status": 1,
+    "stdout": ""
+  }
+]

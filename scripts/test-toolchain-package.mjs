@@ -40,17 +40,31 @@ try {
   const paths = run("tar", ["-tzf", archive]).trim().split("\n");
   assert.ok(
     paths.every((file) =>
-      /^package\/(?:package\.json|README\.md|LICENSE|bin\/|src\/|schema\/|capabilities\/|dist\/ui\/)/.test(
+      /^package\/(?:package\.json|README\.md|LICENSE|bin\/|src\/|capabilities\/|dist\/ui\/|node_modules\/@mfoster\/aps-contracts\/(?:package\.json$|index\.(?:js|d\.ts)$|schema\/[^/]+\.schema\.json$))/.test(
         file,
       ),
     ),
     "Unexpected package content",
   );
   assert.ok(
-    !paths.some((file) =>
-      /(?:product-line\/|\.env(?:\.|$)|node_modules\/)/i.test(file),
+    !paths.some(
+      (file) =>
+        /(?:product-line\/|\.env(?:\.|$))/i.test(file) ||
+        (file.includes("node_modules/") &&
+          !file.startsWith("package/node_modules/@mfoster/aps-contracts/")),
     ),
-    "Package contains studio data or vendored dependencies.",
+    "Package contains studio data or unexpected vendored dependencies.",
+  );
+  const contracts = paths.filter((file) =>
+    file.startsWith("package/node_modules/@mfoster/aps-contracts/"),
+  );
+  assert.equal(
+    contracts.filter((file) => file.endsWith(".schema.json")).length,
+    11,
+  );
+  assert.ok(
+    contracts.some((file) => file.endsWith("/index.js")),
+    "Shared schema runtime must be bundled.",
   );
   const contents = run("tar", ["-xOf", archive]);
   assert.ok(

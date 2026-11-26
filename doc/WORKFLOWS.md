@@ -43,8 +43,9 @@ refreshing file hashes and sizes; backup files remain ineligible for release.
 ### Named groups and complete assembly packages
 
 Use an optional product-local `groups.yaml` to describe a functional assembly
-instead of relying on filename prefixes. `schema/group.schema.json` defines the
-authoring contract; `aps schema write` regenerates it from the typed models.
+instead of relying on filename prefixes. `packages/contracts/schema/group.schema.json`
+defines the toolchain's authoring contract; `aps schema write` copies it into
+the studio's `schema/` directory.
 Each group has a stable `id`, readable `name`, active `revision`, description,
 versioned output `package`, ordered material palette, and a complete `parts` BOM.
 Each part has its own stable ID/name, integer `quantity`, and aligned color

@@ -8,32 +8,41 @@ general-purpose 3D-print skills are welcome.
 ```bash
 git clone <repository-url> ai-product-studio
 cd ai-product-studio
-python3 -m venv .venv
-.venv/bin/pip install -e '.[dev]'
 npm ci
 ```
 
 ## Before submitting a change
 
 ```bash
-.venv/bin/ruff format .
-.venv/bin/ruff check .
-.venv/bin/pytest -q
+npm test
+npm run lint
+npm run format:check
+npm run typecheck
 STUDIO="$(mktemp -d)"
 ./node_modules/.bin/aps init "$STUDIO" --name "Validation Studio"
 ./node_modules/.bin/aps schema write --root "$STUDIO"
-diff -ru schema "$STUDIO/schema"
+diff -ru packages/contracts/schema "$STUDIO/schema"
 ./node_modules/.bin/aps validate --root "$STUDIO"
-npm run test:node --workspace=@mfoster/ai-product-studio
-npm run test --workspace=engineer_ui
-npm run lint --workspace=engineer_ui
-npm run format:check --workspace=engineer_ui
-npm run typecheck --workspace=engineer_ui
 npm run build --workspace=engineer_ui
 ```
 
-Use `npm run aps --` for the Node CLI and activate `.venv` for
-`npm run aps:python --` or the Python differential tests. Spec Kit's tracked
+Use `npm run aps --` for the Node CLI. Both apps consume the local
+`@mfoster/aps-contracts` workspace under `packages/contracts`; its JSON Schemas
+are canonical and its declarations share manifest and assembly types.
+Regression fixtures retain independent legacy expectations, not a live oracle.
+Review fixture changes as contract changes; do not regenerate them from the
+implementation under test. Terminal checks use the POSIX `script` utility.
+
+Python is optional and limited to Blender SDK checks and Spec Kit tooling.
+When changing `template/blender/`, run:
+
+```bash
+uv run --group blender pytest -q
+uv run --group blender ruff check template/blender test/test_bambu_package.py
+uv run --group blender ruff format --check template/blender test/test_bambu_package.py
+```
+
+Spec Kit's tracked
 skills and project files complement, rather than replace, the studio's
 product-line agents and skills. Machine-local Spec Kit state remains ignored.
 Run studio operations against a separate checkout with `APS_STUDIO_ROOT` or
@@ -70,7 +79,7 @@ belong in the separate studio, not the framework allowlist.
 
 ## Adding application behavior
 
-Use typed manifest models, surface errors explicitly, preserve non-destructive
+Update canonical schemas and shared types in `packages/contracts`, surface errors explicitly, preserve non-destructive
 defaults, and expose file-writing previews through `--dry-run` when practical.
 
 ## Publishing the toolchain
@@ -80,6 +89,11 @@ Its package includes the CLI, production UI, schemas, and a reviewed capability
 allowlist in `scripts/build-toolchain.mjs`. Add generic capabilities to that list
 as well as the framework Git allowlist. Do not copy entire local AI registries
 into a release.
+
+The private contracts workspace is bundled into this single published package;
+consumers do not need a second registry package. `prepack` materializes its
+declared files for npm bundling, and `postpack` removes that temporary copy.
+Workspace development resolves the canonical package directly.
 
 Build and exercise an archive before merging:
 

@@ -1,0 +1,7 @@
+{
+  "baseline_commit": "431bb631f586d63b6bb7adcfb690e58542fbf573",
+  "description": "Independent expected results captured from the verified legacy implementation before retirement. Synthetic studio and geometry inputs only; no runtime oracle or automatic regeneration from the Node implementation.",
+  "python": "3.14.5",
+  "typer": "0.27.2",
+  "pydantic": "2.13.5"
+}
