@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -50,3 +51,34 @@ def test_initializes_new_studio(tmp_path: Path) -> None:
     assert (destination / "config" / "printer" / "generic-fdm.yaml").is_file()
     assert (destination / "config" / "material" / "material.yaml").is_file()
     assert (destination / "AGENTS.md").is_file()
+    assert (destination / "product-line" / ".gitkeep").is_file()
+
+    subprocess.run(["git", "init", "-q", str(destination)], check=True)
+    assert (
+        subprocess.run(
+            ["git", "-C", str(destination), "check-ignore", "-q", ".aps/registry.yaml"],
+            check=False,
+        ).returncode
+        == 0
+    )
+    for path in (
+        "config/studio.yaml",
+        "product-line/model/source/model.blend",
+        ".toolkit/manifest.json",
+    ):
+        assert (
+            subprocess.run(
+                ["git", "-C", str(destination), "check-ignore", "-q", path], check=False
+            ).returncode
+            == 1
+        )
+
+
+def test_initialization_preserves_existing_git_configuration(tmp_path: Path) -> None:
+    (tmp_path / ".gitignore").write_text("private/\n", encoding="utf-8")
+    (tmp_path / ".gitattributes").write_text("*.blend filter=lfs\n", encoding="utf-8")
+
+    initialize_studio(tmp_path, "Existing", force=True)
+
+    assert (tmp_path / ".gitignore").read_text(encoding="utf-8") == "private/\n"
+    assert (tmp_path / ".gitattributes").read_text(encoding="utf-8") == "*.blend filter=lfs\n"

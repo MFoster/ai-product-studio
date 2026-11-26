@@ -108,6 +108,18 @@ Run registry synchronization, asset inventory, and validation before release.
             "template",
         ):
             (destination / relative).mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        (".gitignore", ".DS_Store\n.aps/\n*.blend2\n*.blend@\n"),
+        (
+            ".gitattributes",
+            "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n"
+            "*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+        ),
+        ("product-line/.gitkeep", ""),
+    ):
+        path = destination / relative
+        if not path.exists():
+            _write_text(path, content, force=False, dry_run=dry_run)
     return destination
 
 

@@ -5,9 +5,10 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from ai_product_studio.config import dump_yaml, load_yaml
+from ai_product_studio.groups import load_groups, verify_groups
 from ai_product_studio.models import AssetKind, AssetManifest, AssetRecord, ProductManifest
 
-IGNORED_NAMES = {"assets.yaml", "workflow.yaml", "product.yaml", "AGENTS.md"}
+IGNORED_NAMES = {"assets.yaml", "workflow.yaml", "product.yaml", "AGENTS.md", ".DS_Store"}
 
 
 def sha256_file(path: Path) -> str:
@@ -32,6 +33,15 @@ def classify_asset(relative: Path) -> AssetKind:
 
 def inventory_product(product_dir: Path) -> AssetManifest:
     product_manifest = ProductManifest.model_validate(load_yaml(product_dir / "product.yaml"))
+    assets_path = product_dir / "assets.yaml"
+    existing = (
+        AssetManifest.model_validate(load_yaml(assets_path)).assets if assets_path.is_file() else []
+    )
+    existing_by_path = {asset.path: asset for asset in existing}
+    groups = load_groups(product_dir)
+    group_errors = verify_groups(product_dir, groups)
+    if group_errors:
+        raise ValueError("\n".join(group_errors))
     records: list[AssetRecord] = []
     for path in sorted(product_dir.rglob("*")):
         if not path.is_file() or path.name in IGNORED_NAMES or "release" in path.parts:
@@ -39,22 +49,25 @@ def inventory_product(product_dir: Path) -> AssetManifest:
         relative = path.relative_to(product_dir)
         suffix = path.suffix.lower().lstrip(".") or "none"
         kind = classify_asset(relative)
+        previous = existing_by_path.get(relative.as_posix())
         records.append(
             AssetRecord(
                 path=relative.as_posix(),
                 kind=kind,
                 format=suffix,
-                role=path.stem,
+                role=previous.role if previous else path.stem,
                 sha256=sha256_file(path),
                 size_bytes=path.stat().st_size,
-                source=None,
-                release_eligible=kind is not AssetKind.BACKUP,
+                source=previous.source if previous else None,
+                release_eligible=kind is not AssetKind.BACKUP
+                and (previous.release_eligible if previous else True),
             )
         )
     manifest = AssetManifest(
         product=product_manifest.slug,
         generated_at=datetime.now(UTC),
         assets=records,
+        groups=groups,
     )
     dump_yaml(product_dir / "assets.yaml", manifest)
     return manifest
@@ -64,6 +77,9 @@ def verify_asset_manifest(product_dir: Path, manifest: AssetManifest) -> list[st
     errors: list[str] = []
     seen: set[str] = set()
     for asset in manifest.assets:
+        if Path(asset.path).name == ".DS_Store":
+            errors.append(f"macOS metadata is not an asset: {asset.path}; run aps assets inventory")
+            continue
         if asset.path in seen:
             errors.append(f"Duplicate asset record: {asset.path}")
             continue
@@ -76,6 +92,19 @@ def verify_asset_manifest(product_dir: Path, manifest: AssetManifest) -> list[st
             errors.append(f"Size mismatch: {asset.path}")
         if sha256_file(path) != asset.sha256:
             errors.append(f"Checksum mismatch: {asset.path}")
+    try:
+        groups = load_groups(product_dir)
+        if groups != manifest.groups:
+            errors.append("Asset group metadata is stale; run aps assets inventory")
+        paths = {asset.path for asset in manifest.assets}
+        for group in groups:
+            references = {group.package} | {
+                mesh.asset for part in group.parts for mesh in part.meshes
+            }
+            for reference in sorted(references - paths):
+                errors.append(f"Group {group.id}: referenced asset is not inventoried: {reference}")
+    except (OSError, ValueError) as exc:
+        errors.append(str(exc))
     return errors
 
 

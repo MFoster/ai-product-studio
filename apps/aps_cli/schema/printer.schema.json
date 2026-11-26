@@ -1,0 +1,98 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "build_volume_mm": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Build Volume Mm",
+      "type": "object"
+    },
+    "max_material_slots": {
+      "minimum": 1,
+      "title": "Max Material Slots",
+      "type": "integer"
+    },
+    "minimum_detail_mm": {
+      "exclusiveMinimum": 0,
+      "title": "Minimum Detail Mm",
+      "type": "number"
+    },
+    "minimum_wall_mm": {
+      "exclusiveMinimum": 0,
+      "title": "Minimum Wall Mm",
+      "type": "number"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "nozzle_diameter_mm": {
+      "exclusiveMinimum": 0,
+      "title": "Nozzle Diameter Mm",
+      "type": "number"
+    },
+    "package_format": {
+      "default": "3mf",
+      "enum": [
+        "3mf",
+        "stl"
+      ],
+      "title": "Package Format",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "slicer": {
+      "default": "Generic slicer",
+      "title": "Slicer",
+      "type": "string"
+    },
+    "slicing": {
+      "const": "manual",
+      "default": "manual",
+      "title": "Slicing",
+      "type": "string"
+    },
+    "slug": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Slug",
+      "type": "string"
+    },
+    "supported_materials": {
+      "items": {
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Supported Materials",
+      "type": "array"
+    },
+    "supports_multi_material": {
+      "default": false,
+      "title": "Supports Multi Material",
+      "type": "boolean"
+    },
+    "technology": {
+      "const": "FDM",
+      "default": "FDM",
+      "title": "Technology",
+      "type": "string"
+    }
+  },
+  "required": [
+    "slug",
+    "name",
+    "build_volume_mm",
+    "nozzle_diameter_mm",
+    "minimum_wall_mm",
+    "minimum_detail_mm",
+    "max_material_slots"
+  ],
+  "title": "PrinterProfile",
+  "type": "object"
+}

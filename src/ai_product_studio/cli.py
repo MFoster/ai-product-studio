@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Annotated
 
@@ -12,7 +13,9 @@ from ai_product_studio.configuration import (
     parse_material_slugs,
     write_configuration,
 )
+from ai_product_studio.interactive import InteractiveTyper
 from ai_product_studio.models import PrinterProfile, WorkflowStage
+from ai_product_studio.packages import build_group_packages
 from ai_product_studio.paths import find_studio_root
 from ai_product_studio.registry import check as check_registry
 from ai_product_studio.registry import sync as sync_registry
@@ -24,41 +27,37 @@ from ai_product_studio.scaffolding import (
     initialize_studio,
 )
 from ai_product_studio.schemas import write_schemas
+from ai_product_studio.slicer import capture_slice_profile, load_slice_profiles
 from ai_product_studio.validation import validate_studio
 from ai_product_studio.workflow import advance_workflow, load_workflow, record_print_result
 
-app = typer.Typer(no_args_is_help=True, help="Manage AI-first printable product lines.")
-product_line_app = typer.Typer(
-    no_args_is_help=True,
+app = InteractiveTyper(help="Manage AI-first printable product lines.")
+product_line_app = InteractiveTyper(
     help="Create and manage product-line workspaces.",
 )
-variant_app = typer.Typer(
-    no_args_is_help=True,
+variant_app = InteractiveTyper(
     help="Create and manage variants within a product line.",
 )
-product_app = typer.Typer(
-    no_args_is_help=True,
+product_app = InteractiveTyper(
     help="Create and manage individual printable products.",
 )
-registry_app = typer.Typer(
-    no_args_is_help=True,
+registry_app = InteractiveTyper(
     help="Synchronize product-local agents and skills into .github.",
 )
-assets_app = typer.Typer(
-    no_args_is_help=True,
+assets_app = InteractiveTyper(
     help="Inventory managed products and unmanaged legacy assets.",
 )
-workflow_app = typer.Typer(
-    no_args_is_help=True,
+workflow_app = InteractiveTyper(
     help="Inspect and advance gated product workflow stages.",
 )
-schema_app = typer.Typer(
-    no_args_is_help=True,
+schema_app = InteractiveTyper(
     help="Generate JSON Schemas from the typed manifest models.",
 )
-release_app = typer.Typer(
-    no_args_is_help=True,
+release_app = InteractiveTyper(
     help="Create immutable product release manifests.",
+)
+slicer_app = InteractiveTyper(
+    help="Capture and inspect the slicer settings a product is printed with.",
 )
 
 app.add_typer(product_line_app, name="product-line")
@@ -69,15 +68,24 @@ app.add_typer(assets_app, name="assets")
 app.add_typer(workflow_app, name="workflow")
 app.add_typer(schema_app, name="schema")
 app.add_typer(release_app, name="release")
+app.add_typer(slicer_app, name="slicer")
 
 RootOption = Annotated[
     Path | None,
-    typer.Option("--root", help="Studio root; defaults to discovery from the current directory."),
+    typer.Option("--root", help="Studio root; overrides APS_STUDIO_ROOT and directory discovery."),
 ]
 
 
 def _root(value: Path | None) -> Path:
-    return value.resolve() if value else find_studio_root()
+    if value is not None:
+        return value.resolve()
+    configured = os.environ.get("APS_STUDIO_ROOT")
+    if configured:
+        root = Path(configured).expanduser().resolve()
+        if not (root / "config" / "studio.yaml").is_file():
+            raise FileNotFoundError(f"APS_STUDIO_ROOT is not a studio: {root}")
+        return root
+    return find_studio_root()
 
 
 def _fail(exc: Exception) -> None:
@@ -316,6 +324,26 @@ def assets_inventory(
 
 
 @assets_app.command(
+    "package",
+    help="Compose named asset groups into complete, unsliced multi-plate 3MF files.",
+)
+def assets_package(
+    product_path: Path,
+    group: Annotated[str | None, typer.Option("--group", help="Build only this group ID.")] = None,
+    root: RootOption = None,
+) -> None:
+    try:
+        base = _root(root)
+        path = product_path if product_path.is_absolute() else base / product_path
+        packages = build_group_packages(base, path.resolve(), group)
+        for package in packages:
+            typer.echo(str(package))
+        typer.echo(f"Built {len(packages)} group packages; run aps assets inventory next.")
+    except (OSError, ValueError) as exc:
+        _fail(exc)
+
+
+@assets_app.command(
     "legacy-inventory",
     help="Report unmanaged model assets without moving or modifying them.",
 )
@@ -413,6 +441,61 @@ def release_create(
         typer.echo(f"Created immutable release manifest {release_path}")
     except (OSError, ValueError) as exc:
         _fail(exc)
+
+
+@slicer_app.command(
+    "capture",
+    help="Record the slicer settings from a saved slicer project (.3mf) as print evidence.",
+)
+def slicer_capture(
+    product_path: Path,
+    project: Path,
+    slug: Annotated[str | None, typer.Option("--slug")] = None,
+    name: Annotated[str | None, typer.Option("--name")] = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+    force: Annotated[bool, typer.Option("--force")] = False,
+    root: RootOption = None,
+) -> None:
+    try:
+        base = _root(root)
+        path = product_path if product_path.is_absolute() else base / product_path
+        source = project if project.is_absolute() else base / project
+        profile, profile_path = capture_slice_profile(
+            path.resolve(),
+            source.resolve(),
+            slug=slug,
+            name=name,
+            note=note,
+            force=force,
+        )
+        typer.echo(f"Captured slice profile {profile.slug} -> {profile_path}")
+        typer.echo(
+            f"{profile.printer_model or 'unknown printer'}; "
+            f"{profile.print_settings_id or 'unknown preset'}; "
+            f"{profile.layer_height_mm:g} mm layers on a {profile.nozzle_diameter_mm:g} mm nozzle"
+        )
+    except (OSError, ValueError) as exc:
+        _fail(exc)
+
+
+@slicer_app.command("list", help="List the slice profiles recorded for a product.")
+def slicer_list(product_path: Path, root: RootOption = None) -> None:
+    try:
+        base = _root(root)
+        path = product_path if product_path.is_absolute() else base / product_path
+        profiles = load_slice_profiles(path.resolve())
+    except (OSError, ValueError) as exc:
+        _fail(exc)
+        return
+    if not profiles:
+        typer.echo("No slice profiles recorded")
+        return
+    for profile in profiles:
+        typer.echo(
+            f"{profile.slug} [{profile.evidence}] {profile.print_settings_id or profile.name}; "
+            f"layer={profile.layer_height_mm:g} mm; walls={profile.wall_loops}; "
+            f"infill={profile.sparse_infill_density or 'unknown'}"
+        )
 
 
 @app.command("validate", help="Validate studio manifests, assets, skills, and registry state.")

@@ -1,6 +1,6 @@
 # AI Product Studio
 
-AI Product Studio is an AI-first workspace and Python CLI for building coherent,
+AI Product Studio is an AI-first workspace and Node.js CLI for building coherent,
 3D-printable product lines with Blender and packaging them for modern slicers.
 
 The CLI, exposed as `aps`, creates consistent product workspaces, synchronizes
@@ -14,6 +14,7 @@ validates the repository, and records immutable releases.
 - Product-line-local agents and skills synchronized into `.github`.
 - Blender sources, STL exports, 3MF packages, previews, and release manifests.
 - SHA-256 asset inventories.
+- Named assembly groups with quantities, material meshes, and complete multi-plate 3MF packages.
 - A gated lifecycle from brief through physical print validation.
 - YAML manifests and generated JSON Schemas.
 - Non-destructive inventory of existing product assets.
@@ -23,49 +24,242 @@ package, slice, and physical-print validation remain separate evidence levels.
 
 ## Requirements
 
-- Python 3.12 or newer.
+- Node.js 22.18 or newer and npm.
+- Python 3.12 or newer for the legacy CLI, Blender scripts, and parity tests.
 - Blender for model creation and optional headless validation.
 - Bambu Studio or another compatible slicer for plate preparation and review.
-- A virtual environment is strongly recommended.
 
 ## Clone and install
+
+### Consume the published toolchain
+
+The npm distribution is `@mfoster/ai-product-studio` on GitHub Packages. It
+includes the Node CLI, compiled review UI, schemas, and selected generic AI
+capabilities, not any studio's products. Node 22.18 or newer is required.
+Spec Kit's optional workflows additionally use Bash and Python 3; Blender and
+slicing tools remain separate installations.
+Publishing is configured below; a release must be published before these install
+commands are available.
+
+Configure the registry in the consuming studio's `.npmrc`:
+
+```ini
+@mfoster:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
+Provide `NODE_AUTH_TOKEN` through your environment or secret manager. GitHub
+Packages requires authentication to install packages, including public packages;
+use an authorized token with `read:packages`. Never put a literal token in Git.
+
+```bash
+mkdir my-studio && cd my-studio
+npm init -y
+npm install --save-exact @mfoster/ai-product-studio@0.1.0
+npx --no-install aps init .
+npx --no-install aps toolkit sync --dry-run
+npx --no-install aps toolkit sync
+npx --no-install aps validate
+npx --no-install aps-ui --root .
+```
+
+Open `http://127.0.0.1:3000`. The UI is read-only and binds to localhost by
+default. Set `"private": true` in the studio's `package.json` to avoid accidental
+npm publication. Commit that file, `package-lock.json`, studio configuration,
+authoritative AI sources, installed discovery files, and `.toolkit/manifest.json`
+to the studio's own repository. The toolkit does not initialize or publish Git.
+
+The consuming studio can add these scripts to its `package.json`:
+
+```json
+{
+  "private": true,
+  "scripts": {
+    "aps": "aps",
+    "review": "aps-ui --root .",
+    "toolkit:check": "aps toolkit check",
+    "toolkit:sync": "aps toolkit sync"
+  }
+}
+```
+
+There are no automatic installation hooks that write studio files. Upgrade the
+dependency explicitly, review the lockfile, then preview and apply synchronization:
+
+```bash
+npm install --save-exact @mfoster/ai-product-studio@<version>
+npm run toolkit:check
+npm run toolkit:sync -- --dry-run
+npm run toolkit:sync
+npm run aps -- validate
+git diff
+```
+
+`toolkit check` exits nonzero when the installed package version or capability
+content differs from the synchronized state. This is expected after an upgrade.
+Synchronization records version, source, owner, and checksums; it refuses
+unowned destination files, edited managed files (including obsolete ones),
+symlink destinations, and capability collisions. Resolve such conflicts
+explicitly rather than using a force update.
+
+Generic agents, skills, instructions, reusable `template/` files, and Spec Kit
+scripts/templates come from the package. Put studio-wide custom agents under `ai/agent/` and named skills
+under `ai/skill/<name>/SKILL.md`; product-line sources remain under
+`product-line/<line>/ai/`. These are synchronized to the studio's `.github/`
+discovery directories. Skill frontmatter names must match their registered
+directory names. Existing root `AGENTS.md` is never changed by synchronization,
+and the studio's Spec Kit constitution and integration settings are seeded only
+if absent.
+For managed studios, `aps registry sync/check` use the same ownership protections.
+Existing studios with unowned discovery files must move their custom sources
+into `ai/` or resolve generated copies before adopting toolkit synchronization.
+
+### Develop the framework
 
 ```bash
 git clone <repository-url> ai-product-studio
 cd ai-product-studio
-python3 -m venv .venv
-.venv/bin/pip install -e '.[dev]'
-.venv/bin/aps validate
+npm ci
+export PATH="$PWD/node_modules/.bin:$PATH"
+aps init ../my-studio --name "My Studio"
+git -C ../my-studio init
+aps validate --root ../my-studio
 ```
 
-The repository starts without a product catalog. Create your first product line
-with the scaffold commands below. Run `aps config` first to describe your
-printer, slicer, and materials.
+The framework and studio are separate checkouts. Initialize Git in `my-studio`
+and keep its `config/`, `product-line/`, and product assets in that repository.
+Create your first product line with the scaffold commands below. Run `aps config`
+to describe your printer, slicer, and materials.
 
 ## Install for development
 
 From the `ai-product-studio` directory:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install -e '.[dev]'
-.venv/bin/aps --help
-```
-
-Activating the virtual environment makes `aps` available without the prefix:
-
-```bash
-source .venv/bin/activate
+npm ci
+export PATH="$PWD/node_modules/.bin:$PATH"
 aps --help
 ```
 
-Run the project checks:
+Install the Python oracle for parity tests and legacy development:
 
 ```bash
-ruff check .
-pytest -q
-aps validate
+python3 -m venv .venv
+.venv/bin/pip install -e '.[dev]'
+PATH="$PWD/.venv/bin:$PATH" npm test
 ```
+
+## Application workspaces
+
+The root npm workspace contains `apps/engineer_ui`, the local inventory UI,
+and `apps/aps_cli`, published as `@mfoster/ai-product-studio`. The legacy Python implementation remains at
+the repository root as a rollback option and differential test oracle.
+
+```bash
+npm run dev
+npm run build
+npm run aps -- --help
+npm run aps:python -- --help
+npm run test --workspace=engineer_ui
+npm run test --workspace=@mfoster/ai-product-studio
+```
+
+The root `test`, `lint`, `format:check`, and `typecheck` scripts run both
+workspaces; `build` targets the UI. Use `--workspace=engineer_ui` or
+`--workspace=@mfoster/ai-product-studio` to select an app. The CLI's Python source, package
+configuration, and tests remain at the repository root.
+
+`npm run aps --` and `./node_modules/.bin/aps` use Node without Python.
+`npm run aps:node --` and `aps-node` are aliases; `npm run aps:python --`
+requires an installed Python CLI. Activating `.venv` may put the legacy `aps`
+ahead of the Node executable on `PATH`; use `npm run aps --` to select Node
+unambiguously. `npm run test:node --workspace=@mfoster/ai-product-studio`
+compares behavior against Python; set `APS_PYTHON` to its interpreter if it is
+not available in `.venv` or as `python3`. The differential suite covers the
+command families but does not prove complete parity, including exact help and
+error formatting. Shell completion installs for Bash, Zsh, Fish, and PowerShell.
+Like the Python installer, PowerShell installation attempts to set the current
+user's execution policy to `Unrestricted`. Like Python, numeric prompts accept
+non-finite float values; do not use them for printable dimensions.
+On Windows, the Node CLI also rejects root-relative manifest paths to prevent
+them from escaping the studio or product directory.
+For filenames ending in a dot, inventory roles follow Python 3.14's `pathlib`
+behavior; Python 3.12 and 3.13 retain the trailing dot in the role.
+On POSIX, non-strict symlink-loop resolution also follows Python 3.14; earlier
+Python versions may reject the same paths.
+
+## Docker
+
+The CLI and UI have separate images based on Debian Bookworm and Node 22.
+Docker Engine and Compose are required; the images do not contain Python,
+Blender, or a slicer. Studio data is mounted separately and is not included in
+the image build context.
+
+```bash
+mkdir -p ../my-studio
+export APS_STUDIO_DIR="$(cd ../my-studio && pwd)"
+# On Linux, match the host user so the CLI can write to the bind mount.
+export APS_UID="$(id -u)" APS_GID="$(id -g)"
+docker compose --profile cli build
+docker compose run --rm aps_cli init /studio --name "My Studio"
+docker compose run --rm aps_cli validate
+docker compose up -d engineer_ui
+```
+
+Open `http://127.0.0.1:3000`. Set `APS_UI_PORT` to change the host port.
+The UI mount is read-only and the port is bound to localhost; the CLI mount is
+read-write. Run further commands with `docker compose run --rm aps_cli ...`;
+paths passed to the container refer to `/studio`, not host paths. Use an
+existing studio without running `init` again. On Docker Desktop, make sure the
+studio directory is shared with Docker. Absolute host symlinks and files outside
+the mounted directory are not automatically available inside the container.
+Bind mounts also retain host filesystem permissions and case behavior. Stop the
+UI with `docker compose down`.
+
+## Spec-driven development
+
+Spec Kit 1.4.4 provides Copilot skills in `.github/skills/speckit-*` and
+workflow scripts, templates, and project principles in `.specify/`. These are
+tracked in this repository; machine-local state is excluded by
+`.specify/.gitignore`. Invoke `/speckit-specify`,
+`/speckit-plan`, `/speckit-tasks`, and `/speckit-implement` in Copilot; see
+the [upstream guide](https://github.com/github/spec-kit/blob/v1.4.4/docs/quickstart.md).
+The constitution records existing studio principles, and lifecycle hooks are
+disabled. Existing studio agents and skills remain independent of Spec Kit;
+product-line-local registry sources remain authoritative.
+
+When using Spec Kit's optional workflow dispatch, set
+`SPECKIT_COPILOT_ALLOW_ALL_TOOLS=0` to avoid its default all-tools permission.
+
+For maintenance, install the pinned tool with
+`uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v1.4.4`
+and review upstream changes and managed files before upgrading. Do not run
+forced initialization over unreviewed local changes. Spec Kit's upstream
+license is in `.specify/UPSTREAM-LICENSE`.
+
+## Toolchain releases
+
+Run `npm run pack:toolchain` to build a distributable npm archive. The build uses
+an explicit list of generic capabilities; it does not copy local studios,
+generated product registries, credentials, or development build caches. Run
+`node scripts/test-toolchain-package.mjs /path/to/archive.tgz` to install the
+archive into a disposable consumer and exercise its CLI and review UI.
+
+Merging to `main` triggers the publish workflow; it can also be dispatched on
+`main`. The source package version is a stable base: the workflow adds its run
+number minus one to the patch component, so base `0.1.0` produces `0.1.0`,
+`0.1.1`, and so on. Failed runs can leave version gaps. Retrying a run reuses
+its version and will not republish a package already released from that commit.
+Update the source base and root lockfile together for a new minor or major series;
+the run counter continues across series. No bot version commits are required.
+
+The workflow builds on Linux, runs checks and the packed-consumer smoke test,
+publishes the verified archive to GitHub Packages, and creates a
+`toolchain-v<version>` GitHub release targeting the merged commit. Its
+`GITHUB_TOKEN` requires `packages:write` and `contents:write`.
+Package visibility and repository access must be configured
+in GitHub; public source does not automatically make the package public.
+No release is published merely by running the local build.
 
 ## Studio root discovery
 
@@ -75,15 +269,74 @@ Most commands accept:
 --root PATH
 ```
 
-Without `--root`, the CLI starts at the current directory and searches upward
-for `config/studio.yaml`. This means commands can normally be run from the
-studio root or from anywhere inside a product directory.
+Set `APS_STUDIO_ROOT` to an absolute studio path to use the same catalog from
+both the CLI and the UI:
+
+```bash
+export APS_STUDIO_ROOT=/absolute/path/to/my-studio
+aps validate
+npm run dev
+```
+
+An explicit `--root` takes precedence over the environment variable. If neither
+is set, the CLI searches upward from the current directory for
+`config/studio.yaml`; the UI defaults to the framework checkout for compatibility.
+An invalid `APS_STUDIO_ROOT` produces an error instead of selecting another studio.
+
+### Use a separate studio repository
+
+Clone an existing studio beside the framework and point both applications at it:
+
+```bash
+git clone <studio-repository-url> ../my-studio
+export APS_STUDIO_ROOT="$(cd ../my-studio && pwd)"
+aps registry check
+aps validate
+```
+
+For Docker, set `APS_STUDIO_DIR="$APS_STUDIO_ROOT"` instead. Open the studio
+checkout alongside the framework in your editor to access its instructions,
+product-local agents and skills. `aps registry sync` writes generated registry
+copies into the selected studio, not the framework. Review local changes before
+regenerating them.
+
+Update the studio explicitly with Git after reviewing its local changes and the
+incoming commits:
+
+```bash
+git -C "$APS_STUDIO_ROOT" status --short --branch
+git -C "$APS_STUDIO_ROOT" fetch
+git -C "$APS_STUDIO_ROOT" log --oneline HEAD..'@{upstream}'
+git -C "$APS_STUDIO_ROOT" merge --ff-only '@{upstream}'
+aps registry check
+```
+
+If Git reports local conflicts or a non-fast-forward update, stop and resolve
+them in the studio repository; do not force an update. If the registry is stale,
+review its local changes, run `aps registry sync`, and then `aps validate`. This
+independent checkout avoids coupling the framework to one catalog or
+automatically running remote code. Product binaries remain in the studio
+repository and may need Git LFS.
 
 Use `--root` when invoking `aps` from outside the studio:
 
 ```bash
 aps validate --root /path/to/ai-product-studio
 ```
+
+### Separating an existing catalog
+
+The framework ignores local `config/` and `product-line/` data; a fresh studio's
+own `.gitignore` does **not** ignore these directories or printable assets.
+Existing local files are not moved or deleted. Copy the studio's `config/`,
+`product-line/`, and applicable studio-specific `AGENTS.md` into a separate
+repository, preserve binary files, and compare SHA-256 checksums before removing
+any original. In the new studio, run `aps registry sync` and `aps validate`, and
+review validation errors rather than regenerating inventories to hide them.
+Product-line-local agents and skills remain authoritative in that repository;
+their `.github` copies are generated there. Existing tracked files are not
+untracked by `.gitignore`; review their Git status before migration.
+Choose suitable large-file storage before publishing binary assets to a remote.
 
 Slugs must use lowercase kebab-case, for example:
 
@@ -95,23 +348,26 @@ clock-tower
 
 ## Command overview
 
-| Command | Purpose |
-|---|---|
-| `aps init` | Initialize a new studio directory |
-| `aps config` | Interactively configure the studio, printer, and materials |
-| `aps product-line create` | Create a product-line workspace |
-| `aps variant create` | Create a named variant under a product line |
-| `aps product create` | Create a product directly under a variant |
-| `aps registry sync` | Synchronize product-local agents and skills into `.github` |
-| `aps registry check` | Detect missing or stale synchronized customization |
-| `aps assets inventory` | Generate a checksummed product asset manifest |
-| `aps assets legacy-inventory` | Inventory unmanaged assets without moving them |
-| `aps workflow status` | Show current product workflow state |
-| `aps workflow advance` | Advance one validated lifecycle stage |
-| `aps workflow print-result` | Record a passed or failed physical test print |
-| `aps release create` | Create an immutable release manifest |
-| `aps schema write` | Regenerate JSON Schemas from the typed models |
-| `aps validate` | Validate manifests, assets, registry state, and skill metadata |
+| Command                       | Purpose                                                            |
+| ----------------------------- | ------------------------------------------------------------------ |
+| `aps init`                    | Initialize a new studio directory                                  |
+| `aps config`                  | Interactively configure the studio, printer, and materials         |
+| `aps product-line create`     | Create a product-line workspace                                    |
+| `aps variant create`          | Create a named variant under a product line                        |
+| `aps product create`          | Create a product directly under a variant                          |
+| `aps registry sync`           | Synchronize product-local agents and skills into `.github`         |
+| `aps registry check`          | Detect missing or stale synchronized customization                 |
+| `aps assets inventory`        | Generate a checksummed product asset manifest                      |
+| `aps assets package`          | Compose named groups into complete, unsliced multi-plate 3MF files |
+| `aps assets legacy-inventory` | Inventory unmanaged assets without moving them                     |
+| `aps workflow status`         | Show current product workflow state                                |
+| `aps workflow advance`        | Advance one validated lifecycle stage                              |
+| `aps workflow print-result`   | Record a passed or failed physical test print                      |
+| `aps slicer capture`          | Record the slicer settings from a saved slicer project             |
+| `aps slicer list`             | List the slice profiles recorded for a product                     |
+| `aps release create`          | Create an immutable release manifest                               |
+| `aps schema write`            | Regenerate JSON Schemas from the typed models                      |
+| `aps validate`                | Validate manifests, assets, registry state, and skill metadata     |
 
 Every command supports `--help`:
 
@@ -119,6 +375,21 @@ Every command supports `--help`:
 aps workflow advance --help
 aps product create --help
 ```
+
+### Interactive commands
+
+Run `aps` without arguments in a terminal to choose a command from a numbered
+menu (command names also work). The wizard prompts for every argument and option;
+press Enter to accept a default or leave an optional value unset. Command groups
+such as `aps product` also open a menu. Enter `0` to exit, or press Ctrl-C to cancel.
+
+If you specify a command but omit required arguments or options, APS prompts only
+for those missing values, preserving the values you supplied. An option supplied
+without its value, such as a trailing `--name`, also triggers a prompt.
+
+Complete commands run normally without extra prompts. Automatic prompting is
+terminal-only: scripts and piped input retain the usual help and usage errors.
+The existing `aps config` wizard remains explicitly interactive.
 
 ## Initialize another studio
 
@@ -389,6 +660,7 @@ The inventory recognizes:
 - `export/` as generated printable exports.
 - `package/` as slicer packages.
 - `preview/` as rendered evidence.
+- `slice/` as captured slicer settings evidence.
 
 Re-run the inventory whenever an inventoried file changes. `aps validate` reports
 missing files, size changes, or checksum mismatches.
@@ -460,6 +732,47 @@ aps workflow advance "$PRODUCT" print-validation \
   --approval "package-review-2026-09-21"
 ```
 
+### Capture slicer settings
+
+Model geometry alone does not reproduce a print. Wall counts, layer height,
+nozzle diameter, supports, and filament choice all change the part that comes
+off the plate, and recalling them from memory after the fact is unreliable.
+
+`aps slicer capture` reads a saved slicer project (a Bambu Studio or OrcaSlicer
+`.3mf`, which embeds `Metadata/project_settings.config`) and records what was
+actually used:
+
+```bash
+aps slicer capture "$PRODUCT" ~/Documents/watch-stand-v009.3mf \
+  --note "Full five-part plate"
+```
+
+This writes two files under the product:
+
+```text
+slice/0-20mm-standard-printer.yaml           # summarized, validated profile
+slice/0-20mm-standard-printer.settings.json  # full normalized settings, checksummed
+```
+
+If the project file lives outside the product directory it is copied into
+`slice/` so the evidence is preserved with the product. Run
+`aps assets inventory` afterwards to record both files.
+
+```bash
+aps slicer list "$PRODUCT"
+```
+
+A profile records `evidence: captured` only when it came from a real project
+file. A hand-written profile must use `evidence: stated`, which marks it as an
+assumption rather than proof of how a part was printed. Cite the profile slug
+in print reviews and in `aps workflow print-result` evidence.
+
+`aps validate` checks every recorded profile: the referenced project and
+settings files must still exist with matching checksums, the printer profile
+must exist, and the sliced nozzle diameter must agree with that printer
+profile. A slice that contradicts the machine it claims to target is an error,
+not a note.
+
 ### Record a physical print
 
 Physical print results can only be recorded during `print-validation`.
@@ -476,7 +789,8 @@ aps workflow print-result "$PRODUCT" failed \
   --evidence "test-print-002: lid binds during final quarter turn"
 ```
 
-The evidence should identify the printed package/profile and measured result.
+The evidence should identify the printed package, the captured slice profile
+slug, and the measured result.
 
 ### Create a release
 
@@ -526,14 +840,16 @@ Run it before handoff, print validation, and release.
 
 ## Generate JSON Schemas
 
-Typed Python models are the runtime source of truth. Regenerate editor-compatible
-JSON Schemas after changing manifest models:
+The Node CLI uses bundled JSON Schema snapshots and additional runtime checks.
+Write the bundled schemas into a studio with:
 
 ```bash
 aps schema write
 ```
 
 Schemas are written to `schema/`. Stale generated schema files are removed.
+When changing manifest models, update the bundled snapshots under
+`apps/aps_cli/schema/` and run the Python differential schema test.
 
 ## Safe command behavior
 
@@ -603,6 +919,9 @@ ai-product-studio/
 ├── product-line/
 ├── report/
 ├── schema/
+├── apps/
+│   ├── aps_cli/
+│   └── engineer_ui/
 ├── src/
 ├── template/
 └── test/

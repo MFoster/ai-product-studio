@@ -1,0 +1,67 @@
+{
+  "name": "@mfoster/ai-product-studio",
+  "version": "0.1.0",
+  "description": "CLI, review UI, and reusable AI capabilities for independent 3D-print studios.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MFoster/ai-product-studio.git",
+    "directory": "apps/aps_cli"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "files": [
+    "bin",
+    "src",
+    "schema",
+    "capabilities",
+    "dist/ui",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "bin": {
+    "aps": "./bin/aps-node.js",
+    "aps-node": "./bin/aps-node.js",
+    "aps-ui": "./bin/aps-ui.js"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-toolchain.mjs",
+    "prepack": "npm run build",
+    "aps": "cd ../.. && node apps/aps_cli/bin/aps-node.js",
+    "aps:node": "cd ../.. && node apps/aps_cli/bin/aps-node.js",
+    "aps:python": "cd ../.. && python3 -m ai_product_studio",
+    "test:node": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "typecheck:node": "tsc --noEmit",
+    "test": "npm run test:node && cd ../.. && pytest -q",
+    "lint": "npm run typecheck:node && cd ../.. && ruff check .",
+    "format:check": "prettier --check bin src test package.json tsconfig.json && cd ../.. && ruff format --check ."
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "lucide-react": "^0.468.0",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "^0.187.0",
+    "tsx": "^4.20.0",
+    "yazl": "^3.3.1",
+    "yauzl": "^3.2.0",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/yazl": "^3.3.0",
+    "@types/yauzl": "^2.10.3",
+    "prettier": "^3.6.0",
+    "typescript": "^5.9.0"
+  }
+}

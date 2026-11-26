@@ -1,0 +1,60 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "audience": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Audience",
+      "type": "array"
+    },
+    "default_workflow": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Default Workflow",
+      "type": "array"
+    },
+    "description": {
+      "default": "",
+      "title": "Description",
+      "type": "string"
+    },
+    "design_language": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Design Language",
+      "type": "array"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "slug": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Slug",
+      "type": "string"
+    },
+    "variants": {
+      "items": {
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "type": "string"
+      },
+      "title": "Variants",
+      "type": "array"
+    }
+  },
+  "required": [
+    "slug",
+    "name"
+  ],
+  "title": "ProductLineManifest",
+  "type": "object"
+}

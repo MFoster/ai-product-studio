@@ -11,6 +11,7 @@ from ai_product_studio.skill_library import (
 CORE_SKILLS = {
     "mesh-printability-audit",
     "fit-tolerance-engineering",
+    "calibration-coupon-design",
     "wall-strength-engineering",
     "support-free-orientation",
     "fdm-detail-design",

@@ -1,0 +1,69 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "asset_hashes": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Asset Hashes",
+      "type": "object"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "notes": {
+      "default": "",
+      "title": "Notes",
+      "type": "string"
+    },
+    "physical_print_status": {
+      "enum": [
+        "pending",
+        "passed",
+        "failed"
+      ],
+      "title": "Physical Print Status",
+      "type": "string"
+    },
+    "printer_profile": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Printer Profile",
+      "type": "string"
+    },
+    "product": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Product",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "validations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Validations",
+      "type": "array"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "product",
+    "version",
+    "created_at",
+    "printer_profile",
+    "asset_hashes",
+    "validations",
+    "physical_print_status"
+  ],
+  "title": "ReleaseManifest",
+  "type": "object"
+}

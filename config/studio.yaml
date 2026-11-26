@@ -1,6 +1,0 @@
-schema_version: "1.0"
-name: AI Product Studio
-default_printer: generic-fdm
-material_config: config/material/material.yaml
-product_lines: []
-registry_index: .aps/registry.yaml

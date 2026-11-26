@@ -6,18 +6,21 @@ from pydantic import ValidationError
 
 from ai_product_studio.assets import verify_asset_manifest
 from ai_product_studio.config import load_yaml
+from ai_product_studio.groups import load_groups, verify_groups
 from ai_product_studio.models import (
     AssetManifest,
     MaterialConfiguration,
     PrinterProfile,
     ProductLineManifest,
     ProductManifest,
+    SliceProfile,
     StudioManifest,
     VariantManifest,
     WorkflowManifest,
 )
 from ai_product_studio.registry import check as check_registry
 from ai_product_studio.skill_library import validate_skill_library
+from ai_product_studio.slicer import slice_dir, verify_slice_profile
 
 
 def _validate_file(path: Path, model: type) -> list[str]:
@@ -81,6 +84,23 @@ def validate_studio(root: Path) -> list[str]:
                 errors.extend(_validate_file(product / "workflow.yaml", WorkflowManifest))
                 if not (product / "AGENTS.md").is_file():
                     errors.append(f"{product}: missing AGENTS.md")
+                try:
+                    errors.extend(
+                        f"{product}: {error}"
+                        for error in verify_groups(product, load_groups(product))
+                    )
+                except (OSError, ValueError) as exc:
+                    errors.append(f"{product}: {exc}")
+                for profile_path in sorted(slice_dir(product).glob("*.yaml")):
+                    errors.extend(_validate_file(profile_path, SliceProfile))
+                    try:
+                        profile = SliceProfile.model_validate(load_yaml(profile_path))
+                    except (OSError, ValueError, ValidationError):
+                        continue
+                    errors.extend(
+                        f"{product}: {error}"
+                        for error in verify_slice_profile(product, profile, root)
+                    )
                 assets_path = product / "assets.yaml"
                 if assets_path.is_file():
                     try:

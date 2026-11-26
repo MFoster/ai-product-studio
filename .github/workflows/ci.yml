@@ -44,11 +44,155 @@ jobs:
       - name: Build distribution
         run: python -m build
 
+      - name: Initialize isolated test studio
+        run: aps init "$RUNNER_TEMP/aps-studio" --name "CI Studio"
+
       - name: Regenerate schemas
-        run: aps schema write
+        run: aps schema write --root "$RUNNER_TEMP/aps-studio"
 
       - name: Verify generated schemas
-        run: git diff --exit-code schema
+        run: diff -ru schema "$RUNNER_TEMP/aps-studio/schema"
 
       - name: Validate studio
-        run: aps validate
+        run: aps validate --root "$RUNNER_TEMP/aps-studio"
+
+  engineer-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install workspaces
+        run: npm ci
+
+      - name: Test
+        run: npm run test --workspace=engineer_ui
+
+      - name: Lint
+        run: npm run lint --workspace=engineer_ui
+
+      - name: Check formatting
+        run: npm run format:check --workspace=engineer_ui
+
+      - name: Typecheck
+        run: npm run typecheck --workspace=engineer_ui
+
+      - name: Build
+        run: npm run build --workspace=engineer_ui
+
+  aps-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python oracle
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python CLI
+        run: python -m pip install -e .
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install workspaces
+        run: npm ci
+
+      - name: Exercise installed Node CLI
+        run: |
+          ./node_modules/.bin/aps init "$RUNNER_TEMP/aps-node-studio" --name "CI Studio"
+          ./node_modules/.bin/aps schema write --root "$RUNNER_TEMP/aps-node-studio"
+          diff -ru schema "$RUNNER_TEMP/aps-node-studio/schema"
+          ./node_modules/.bin/aps validate --root "$RUNNER_TEMP/aps-node-studio"
+
+      - name: Typecheck Node CLI
+        run: npm run typecheck:node --workspace=@mfoster/ai-product-studio
+
+      - name: Compare Node and Python behavior
+        run: npm run test:node --workspace=@mfoster/ai-product-studio
+
+      - name: Check Python rollback command
+        run: npm run aps:python -- --help
+
+      - name: Check Node formatting
+        run: npx prettier --check apps/aps_cli/bin apps/aps_cli/src apps/aps_cli/test apps/aps_cli/package.json apps/aps_cli/tsconfig.json scripts/*.mjs
+
+      - name: Exercise packaged consumer
+        run: |
+          mkdir -p "$RUNNER_TEMP/aps-package"
+          npm pack --workspace=@mfoster/ai-product-studio --pack-destination "$RUNNER_TEMP/aps-package" --quiet
+          node scripts/test-toolchain-package.mjs "$RUNNER_TEMP"/aps-package/*.tgz
+
+  aps-cli-windows-completion:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python oracle
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python CLI
+        run: python -m pip install -e .
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install workspaces
+        run: npm ci
+
+      - name: Compare Windows shell and path behavior
+        env:
+          APS_PYTHON: python
+        run: npx tsx --test --test-name-pattern="Windows shell detection|Windows home expansion|Windows manifest paths|registry paths use portable|managed inventory matches Python|workflow artifact extensions|registry synchronization and stale|schema generation matches Python|legacy asset inventory matches Python" apps/aps_cli/test/parity.test.ts
+
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build and exercise both images
+        run: |
+          export APS_STUDIO_DIR="$RUNNER_TEMP/aps-container-studio"
+          export APS_UID="$(id -u)" APS_GID="$(id -g)"
+          mkdir -p "$APS_STUDIO_DIR"
+          docker compose --profile cli build
+          docker compose run --rm aps_cli init /studio --name "Container CI Studio"
+          docker compose run --rm aps_cli product-line create smoke --name "Container Smoke Line"
+          docker compose run --rm aps_cli schema write
+          diff -ru schema "$APS_STUDIO_DIR/schema"
+          docker compose run --rm aps_cli toolkit sync
+          docker compose run --rm aps_cli toolkit check
+          docker compose run --rm aps_cli validate
+          docker compose run --rm --entrypoint sh aps_cli -c 'test ! -e /opt/aps/config && test ! -e /opt/aps/product-line && ! command -v python3'
+          docker compose up -d engineer_ui
+          curl --fail --retry 20 --retry-all-errors --retry-delay 2 http://127.0.0.1:3000/ -o "$RUNNER_TEMP/aps-ui.html"
+          grep -q "Container Smoke Line" "$RUNNER_TEMP/aps-ui.html"
+          docker compose exec -T engineer_ui sh -c 'test ! -e /opt/aps/config && test ! -e /opt/aps/product-line && ! command -v python3'
+          if docker compose exec -T engineer_ui sh -c 'echo unexpected > /studio/container-write-test'; then
+            echo "UI studio mount must be read-only" >&2
+            exit 1
+          fi
+
+      - name: Stop containers
+        if: always()
+        env:
+          APS_STUDIO_DIR: ${{ runner.temp }}/aps-container-studio
+        run: docker compose down
