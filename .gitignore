@@ -10,11 +10,61 @@ dist/
 build/
 *.egg-info/
 
-# Generated registry state
+# Studio-specific data belongs in a separate repository.
+/config/
+/product-line/*
+!/product-line/.gitkeep
+
+# Local generated output
+/result.json
+# Canonical schemas live in packages/contracts; root copies are generated.
+/schema/
+
+# Registry entries are generated from studio-local sources. Framework-owned
+# capabilities are explicitly allowed; add new generic capabilities here.
+/.github/agents/*
+!/.github/agents/blender-3d-print-expert.agent.md
+!/.github/agents/blender-product-photographer.agent.md
+!/.github/agents/product-line-curator.agent.md
+!/.github/agents/studio-orchestrator.agent.md
+/.github/skills/*
+!/.github/skills/3mf-release-packaging/
+!/.github/skills/ams-multipart-color/
+!/.github/skills/bambu-plate-planning/
+!/.github/skills/calibration-coupon-design/
+!/.github/skills/catalog-render-and-review/
+!/.github/skills/curved-surface-relief/
+!/.github/skills/fdm-detail-design/
+!/.github/skills/fit-tolerance-engineering/
+!/.github/skills/mesh-printability-audit/
+!/.github/skills/model-repair-from-stl/
+!/.github/skills/organic-character-detail/
+!/.github/skills/procedural-decoration-system/
+!/.github/skills/speckit-*/
+!/.github/skills/support-free-orientation/
+!/.github/skills/test-print-feedback-loop/
+!/.github/skills/threaded-container-mechanism/
+!/.github/skills/wall-strength-engineering/
+
+# Generated registry metadata and local catalog reports
 .aps/
-report/*.yaml
-!report/.gitkeep
+/.toolkit/
+/report/*
+!/report/.gitkeep
 
 # Blender recovery files are inventoried but not release artifacts
 *.blend2
 *.blend@
+
+# npm workspaces and local inventory UI
+node_modules/
+apps/*/node_modules/
+apps/engineer_ui/.next/
+apps/engineer_ui/*.tsbuildinfo
+apps/engineer_ui/.env*
+apps/engineer_ui/playwright-report/
+apps/engineer_ui/test-results/
+apps/aps_cli/capabilities/
+apps/aps_cli/README.md
+apps/aps_cli/LICENSE
+*.tgz

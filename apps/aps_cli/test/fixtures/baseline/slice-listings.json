@@ -1,0 +1,18 @@
+[
+  {
+    "status": 0,
+    "stdout": "                                                                                \n Usage: python -m ai_product_studio slicer list [OPTIONS] {product_path}        \n                                                                                \n List the slice profiles recorded for a product.                                \n                                                                                \n╭─ Arguments ──────────────────────────────────────────────────────────────────╮\n│ *    product_path      <path>  [required]                                    │\n╰──────────────────────────────────────────────────────────────────────────────╯\n╭─ Options ────────────────────────────────────────────────────────────────────╮\n│ --root        <path>  Studio root; overrides APS_STUDIO_ROOT and directory   │\n│                       discovery.                                             │\n│ --help                Show this message and exit.                            │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\n"
+  },
+  {
+    "status": 0,
+    "stdout": "No slice profiles recorded\n"
+  },
+  {
+    "status": 0,
+    "stdout": "0-20mm-standard [captured] 0.20mm Standard; layer=0.2 mm; walls=2; infill=unknown\n"
+  },
+  {
+    "status": 0,
+    "stdout": "0-20mm-standard [captured] 0.20mm Standard; layer=1.23457e-05 mm; walls=2; infill=unknown\n"
+  }
+]

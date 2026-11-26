@@ -1,0 +1,270 @@
+[
+  {
+    "schema_version": "1.0",
+    "product": "model",
+    "generated_at": "<timestamp>",
+    "assets": [
+      {
+        "path": "export/stl/part.stl",
+        "kind": "export",
+        "format": "stl",
+        "role": "part",
+        "sha256": "d30ca7a7a32bf5772dc5eb2a2e7bd35737eff795ad74f2479b359716b59abdfa",
+        "size_bytes": 4,
+        "release_eligible": true
+      },
+      {
+        "path": "source/model.blend",
+        "kind": "source",
+        "format": "blend",
+        "role": "model",
+        "sha256": "0bec25fcceae863db21f5d26f8abc94f16b115be71d6bcaa9cca7f5635220824",
+        "size_bytes": 10,
+        "release_eligible": true
+      },
+      {
+        "path": "source/model.blend1",
+        "kind": "backup",
+        "format": "blend1",
+        "role": "model",
+        "sha256": "54d00d867758cef816bc4685f58e327b949712b07ebd17c3485f3ffc9e9f5133",
+        "size_bytes": 6,
+        "release_eligible": false
+      },
+      {
+        "path": "source/order/a/child.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "child",
+        "sha256": "233562de1a0288b139c4fa40b7d189f806e906eeb048517aeb67f34ac0e2faf1",
+        "size_bytes": 6,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/a.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "a",
+        "sha256": "7d10de8554ed5ca40f9d0f0e0f4375b5b338af3fb96d33c9b2f53b5289b8f4fe",
+        "size_bytes": 7,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "",
+        "sha256": "715dc8493c36579a5b116995100f635e3572fdf8703e708ef1a08d943b36774e",
+        "size_bytes": 7,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/𐀀.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "𐀀",
+        "sha256": "f6c48b6b20435f3d1fcb7013105e68c1fd58deab167329bf35511ad2f0bfa446",
+        "size_bytes": 13,
+        "release_eligible": true
+      }
+    ],
+    "groups": []
+  },
+  {
+    "schema_version": "1.0",
+    "product": "model",
+    "generated_at": "<timestamp>",
+    "assets": [
+      {
+        "path": "export/stl/part.stl",
+        "kind": "export",
+        "format": "stl",
+        "role": "part",
+        "sha256": "d30ca7a7a32bf5772dc5eb2a2e7bd35737eff795ad74f2479b359716b59abdfa",
+        "size_bytes": 4,
+        "release_eligible": true
+      },
+      {
+        "path": "source/model.blend",
+        "kind": "source",
+        "format": "blend",
+        "role": "authored role",
+        "sha256": "d67e2e944994496c8d8ec76eed0cf9f09679448d584b532bebf941852a37f5ed",
+        "size_bytes": 7,
+        "source": "source/canonical.blend",
+        "release_eligible": false
+      },
+      {
+        "path": "source/model.blend1",
+        "kind": "backup",
+        "format": "blend1",
+        "role": "model",
+        "sha256": "54d00d867758cef816bc4685f58e327b949712b07ebd17c3485f3ffc9e9f5133",
+        "size_bytes": 6,
+        "release_eligible": false
+      },
+      {
+        "path": "source/order/a/child.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "child",
+        "sha256": "233562de1a0288b139c4fa40b7d189f806e906eeb048517aeb67f34ac0e2faf1",
+        "size_bytes": 6,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/a.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "a",
+        "sha256": "7d10de8554ed5ca40f9d0f0e0f4375b5b338af3fb96d33c9b2f53b5289b8f4fe",
+        "size_bytes": 7,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "",
+        "sha256": "715dc8493c36579a5b116995100f635e3572fdf8703e708ef1a08d943b36774e",
+        "size_bytes": 7,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/𐀀.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "𐀀",
+        "sha256": "f6c48b6b20435f3d1fcb7013105e68c1fd58deab167329bf35511ad2f0bfa446",
+        "size_bytes": 13,
+        "release_eligible": true
+      }
+    ],
+    "groups": []
+  },
+  {
+    "schema_version": "1.0",
+    "product": "model",
+    "generated_at": "<timestamp>",
+    "assets": [
+      {
+        "path": "export/stl/part.stl",
+        "kind": "export",
+        "format": "stl",
+        "role": "part",
+        "sha256": "d30ca7a7a32bf5772dc5eb2a2e7bd35737eff795ad74f2479b359716b59abdfa",
+        "size_bytes": 4,
+        "release_eligible": true
+      },
+      {
+        "path": "groups.yaml",
+        "kind": "document",
+        "format": "yaml",
+        "role": "groups",
+        "sha256": "df844b67da5e3e09895b999c065fce8a0e408317c71e4b0ee83aca86d4d8a077",
+        "size_bytes": 469,
+        "release_eligible": true
+      },
+      {
+        "path": "package/group.3mf",
+        "kind": "package",
+        "format": "3mf",
+        "role": "group",
+        "sha256": "1343fd8bd417ccf03ddadea65e34125f9c19aabfb06519483420b1b0e210dc78",
+        "size_bytes": 632,
+        "release_eligible": true
+      },
+      {
+        "path": "source/model.blend",
+        "kind": "source",
+        "format": "blend",
+        "role": "authored role",
+        "sha256": "d67e2e944994496c8d8ec76eed0cf9f09679448d584b532bebf941852a37f5ed",
+        "size_bytes": 7,
+        "source": "source/canonical.blend",
+        "release_eligible": false
+      },
+      {
+        "path": "source/model.blend1",
+        "kind": "backup",
+        "format": "blend1",
+        "role": "model",
+        "sha256": "54d00d867758cef816bc4685f58e327b949712b07ebd17c3485f3ffc9e9f5133",
+        "size_bytes": 6,
+        "release_eligible": false
+      },
+      {
+        "path": "source/order/a/child.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "child",
+        "sha256": "233562de1a0288b139c4fa40b7d189f806e906eeb048517aeb67f34ac0e2faf1",
+        "size_bytes": 6,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/a.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "a",
+        "sha256": "7d10de8554ed5ca40f9d0f0e0f4375b5b338af3fb96d33c9b2f53b5289b8f4fe",
+        "size_bytes": 7,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "",
+        "sha256": "715dc8493c36579a5b116995100f635e3572fdf8703e708ef1a08d943b36774e",
+        "size_bytes": 7,
+        "release_eligible": true
+      },
+      {
+        "path": "source/order/𐀀.txt",
+        "kind": "source",
+        "format": "txt",
+        "role": "𐀀",
+        "sha256": "f6c48b6b20435f3d1fcb7013105e68c1fd58deab167329bf35511ad2f0bfa446",
+        "size_bytes": 13,
+        "release_eligible": true
+      }
+    ],
+    "groups": [
+      {
+        "id": "assembly",
+        "name": "Assembly",
+        "revision": "v1",
+        "description": "",
+        "package": "package/group.3mf",
+        "materials": [
+          {
+            "id": "white",
+            "name": "White",
+            "color": "#ffffff",
+            "material": "pla"
+          }
+        ],
+        "parts": [
+          {
+            "id": "part",
+            "name": "Part",
+            "quantity": 1,
+            "meshes": [
+              {
+                "asset": "export/stl/part.stl",
+                "material": "white",
+                "sha256": "d30ca7a7a32bf5772dc5eb2a2e7bd35737eff795ad74f2479b359716b59abdfa"
+              }
+            ]
+          }
+        ],
+        "layout": {
+          "spacing_mm": 6,
+          "margin_mm": 5,
+          "orientation": "preserve-source"
+        }
+      }
+    ]
+  }
+]

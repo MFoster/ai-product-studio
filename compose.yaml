@@ -1,0 +1,32 @@
+services:
+  engineer_ui:
+    build:
+      context: .
+      target: ui
+    environment:
+      APS_STUDIO_ROOT: /studio
+    user: "${APS_UID:-1000}:${APS_GID:-1000}"
+    ports:
+      - "127.0.0.1:${APS_UI_PORT:-3000}:3000"
+    volumes:
+      - type: bind
+        source: ${APS_STUDIO_DIR:?Set APS_STUDIO_DIR to an existing studio directory}
+        target: /studio
+        read_only: true
+        bind:
+          create_host_path: false
+
+  aps_cli:
+    profiles: ["cli"]
+    build:
+      context: .
+      target: cli
+    environment:
+      APS_STUDIO_ROOT: /studio
+    user: "${APS_UID:-1000}:${APS_GID:-1000}"
+    volumes:
+      - type: bind
+        source: ${APS_STUDIO_DIR:?Set APS_STUDIO_DIR to an existing studio directory}
+        target: /studio
+        bind:
+          create_host_path: false

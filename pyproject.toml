@@ -1,43 +1,19 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
-name = "ai-product-studio"
+name = "aps-blender-tools"
 version = "0.1.0"
-description = "AI-first workspace and CLI for managing printable product lines."
-readme = "README.md"
+description = "Optional development checks for the Blender SDK scripts."
 requires-python = ">=3.12"
-license = { file = "LICENSE" }
-keywords = ["blender", "3d-printing", "3mf", "stl", "copilot", "automation"]
-classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Environment :: Console",
-  "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Topic :: Multimedia :: Graphics :: 3D Modeling",
-]
-dependencies = [
-  "pydantic>=2.8,<3",
-  "PyYAML>=6.0,<7",
-  "typer>=0.12,<1",
-]
+dependencies = []
 
-[project.optional-dependencies]
-dev = [
-  "build>=1.2,<2",
+[dependency-groups]
+blender = [
   "pytest>=8,<10",
   "ruff>=0.8,<1",
 ]
 
-[project.scripts]
-aps = "ai_product_studio.cli:app"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/ai_product_studio"]
+[tool.uv]
+package = false
+default-groups = []
 
 [tool.pytest.ini_options]
 testpaths = ["test"]
@@ -46,6 +22,7 @@ addopts = "-ra"
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+extend-exclude = [".specify"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

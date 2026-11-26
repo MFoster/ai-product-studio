@@ -1,0 +1,1501 @@
+[
+  {},
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": [],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": ["default"]
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/alpha/variant/default/": null,
+    "product-line/alpha/variant/default/AGENTS.md": "# Default variant instructions\n\nRead `variant.yaml`, the parent product-line instructions, and each product manifest.\nApply this variant's theme, palette, and constraints consistently across its catalog.\nDo not weaken shared mechanical interfaces without recording an explicit product exception.\n",
+    "product-line/alpha/variant/default/variant.yaml": {
+      "schema_version": "1.0",
+      "slug": "default",
+      "name": "Default",
+      "theme": "Winter",
+      "palette": {},
+      "constraints": [],
+      "products": []
+    },
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": ["default"]
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/alpha/variant/default/": null,
+    "product-line/alpha/variant/default/AGENTS.md": "# Default variant instructions\n\nRead `variant.yaml`, the parent product-line instructions, and each product manifest.\nApply this variant's theme, palette, and constraints consistently across its catalog.\nDo not weaken shared mechanical interfaces without recording an explicit product exception.\n",
+    "product-line/alpha/variant/default/example/": null,
+    "product-line/alpha/variant/default/example/AGENTS.md": "# Example product instructions\n\nRead `product.yaml`, `workflow.yaml`, `assets.yaml` when present, and all parent\n`AGENTS.md` files before changing this product.\nKeep canonical editable files in `source/`, generated meshes in `export/`, slicer\npackages in `package/`, renders in `preview/`, and immutable versions in `release/`.\nNever mark a physical print as passed without recorded test-print evidence.\n",
+    "product-line/alpha/variant/default/example/export/": null,
+    "product-line/alpha/variant/default/example/export/stl/": null,
+    "product-line/alpha/variant/default/example/package/": null,
+    "product-line/alpha/variant/default/example/preview/": null,
+    "product-line/alpha/variant/default/example/product.yaml": {
+      "schema_version": "1.0",
+      "slug": "example",
+      "name": "Example",
+      "summary": "A product",
+      "intended_use": "",
+      "dimensions_mm": {},
+      "printer_profile": "generic-fdm",
+      "components": [],
+      "output_formats": ["blend", "stl", "3mf", "png"]
+    },
+    "product-line/alpha/variant/default/example/release/": null,
+    "product-line/alpha/variant/default/example/review/": null,
+    "product-line/alpha/variant/default/example/script/": null,
+    "product-line/alpha/variant/default/example/source/": null,
+    "product-line/alpha/variant/default/example/workflow.yaml": {
+      "schema_version": "1.0",
+      "product": "example",
+      "current_stage": "brief",
+      "approvals": {},
+      "blockers": [],
+      "physical_print_status": "pending",
+      "history": []
+    },
+    "product-line/alpha/variant/default/variant.yaml": {
+      "schema_version": "1.0",
+      "slug": "default",
+      "name": "Default",
+      "theme": "Winter",
+      "palette": {},
+      "constraints": [],
+      "products": ["example"]
+    },
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": ["default"]
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/alpha/variant/default/": null,
+    "product-line/alpha/variant/default/AGENTS.md": "# Default variant instructions\n\nRead `variant.yaml`, the parent product-line instructions, and each product manifest.\nApply this variant's theme, palette, and constraints consistently across its catalog.\nDo not weaken shared mechanical interfaces without recording an explicit product exception.\n",
+    "product-line/alpha/variant/default/example/": null,
+    "product-line/alpha/variant/default/example/AGENTS.md": "# Example product instructions\n\nRead `product.yaml`, `workflow.yaml`, `assets.yaml` when present, and all parent\n`AGENTS.md` files before changing this product.\nKeep canonical editable files in `source/`, generated meshes in `export/`, slicer\npackages in `package/`, renders in `preview/`, and immutable versions in `release/`.\nNever mark a physical print as passed without recorded test-print evidence.\n",
+    "product-line/alpha/variant/default/example/export/": null,
+    "product-line/alpha/variant/default/example/export/stl/": null,
+    "product-line/alpha/variant/default/example/package/": null,
+    "product-line/alpha/variant/default/example/preview/": null,
+    "product-line/alpha/variant/default/example/product.yaml": {
+      "schema_version": "1.0",
+      "slug": "example",
+      "name": "Example",
+      "summary": "A product",
+      "intended_use": "",
+      "dimensions_mm": {},
+      "printer_profile": "generic-fdm",
+      "components": [],
+      "output_formats": ["blend", "stl", "3mf", "png"]
+    },
+    "product-line/alpha/variant/default/example/release/": null,
+    "product-line/alpha/variant/default/example/review/": null,
+    "product-line/alpha/variant/default/example/script/": null,
+    "product-line/alpha/variant/default/example/source/": null,
+    "product-line/alpha/variant/default/example/workflow.yaml": {
+      "schema_version": "1.0",
+      "product": "example",
+      "current_stage": "brief",
+      "approvals": {},
+      "blockers": [],
+      "physical_print_status": "pending",
+      "history": []
+    },
+    "product-line/alpha/variant/default/variant.yaml": {
+      "schema_version": "1.0",
+      "slug": "default",
+      "name": "Default",
+      "theme": "Winter",
+      "palette": {},
+      "constraints": [],
+      "products": ["example"]
+    },
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": ["default"]
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/alpha/variant/default/": null,
+    "product-line/alpha/variant/default/AGENTS.md": "# Default variant instructions\n\nRead `variant.yaml`, the parent product-line instructions, and each product manifest.\nApply this variant's theme, palette, and constraints consistently across its catalog.\nDo not weaken shared mechanical interfaces without recording an explicit product exception.\n",
+    "product-line/alpha/variant/default/example/": null,
+    "product-line/alpha/variant/default/example/AGENTS.md": "# Replacement product instructions\n\nRead `product.yaml`, `workflow.yaml`, `assets.yaml` when present, and all parent\n`AGENTS.md` files before changing this product.\nKeep canonical editable files in `source/`, generated meshes in `export/`, slicer\npackages in `package/`, renders in `preview/`, and immutable versions in `release/`.\nNever mark a physical print as passed without recorded test-print evidence.\n",
+    "product-line/alpha/variant/default/example/export/": null,
+    "product-line/alpha/variant/default/example/export/stl/": null,
+    "product-line/alpha/variant/default/example/package/": null,
+    "product-line/alpha/variant/default/example/preview/": null,
+    "product-line/alpha/variant/default/example/product.yaml": {
+      "schema_version": "1.0",
+      "slug": "example",
+      "name": "Replacement",
+      "summary": "",
+      "intended_use": "",
+      "dimensions_mm": {},
+      "printer_profile": "generic-fdm",
+      "components": [],
+      "output_formats": ["blend", "stl", "3mf", "png"]
+    },
+    "product-line/alpha/variant/default/example/release/": null,
+    "product-line/alpha/variant/default/example/review/": null,
+    "product-line/alpha/variant/default/example/script/": null,
+    "product-line/alpha/variant/default/example/source/": null,
+    "product-line/alpha/variant/default/example/workflow.yaml": {
+      "schema_version": "1.0",
+      "product": "example",
+      "current_stage": "brief",
+      "approvals": {},
+      "blockers": [],
+      "physical_print_status": "pending",
+      "history": []
+    },
+    "product-line/alpha/variant/default/variant.yaml": {
+      "schema_version": "1.0",
+      "slug": "default",
+      "name": "Default",
+      "theme": "Winter",
+      "palette": {},
+      "constraints": [],
+      "products": ["example"]
+    },
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": ["default"]
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/alpha/variant/default/": null,
+    "product-line/alpha/variant/default/AGENTS.md": "# Default variant instructions\n\nRead `variant.yaml`, the parent product-line instructions, and each product manifest.\nApply this variant's theme, palette, and constraints consistently across its catalog.\nDo not weaken shared mechanical interfaces without recording an explicit product exception.\n",
+    "product-line/alpha/variant/default/example/": null,
+    "product-line/alpha/variant/default/example/AGENTS.md": "# Replacement product instructions\n\nRead `product.yaml`, `workflow.yaml`, `assets.yaml` when present, and all parent\n`AGENTS.md` files before changing this product.\nKeep canonical editable files in `source/`, generated meshes in `export/`, slicer\npackages in `package/`, renders in `preview/`, and immutable versions in `release/`.\nNever mark a physical print as passed without recorded test-print evidence.\n",
+    "product-line/alpha/variant/default/example/export/": null,
+    "product-line/alpha/variant/default/example/export/stl/": null,
+    "product-line/alpha/variant/default/example/package/": null,
+    "product-line/alpha/variant/default/example/preview/": null,
+    "product-line/alpha/variant/default/example/product.yaml": {
+      "schema_version": "1.0",
+      "slug": "example",
+      "name": "Replacement",
+      "summary": "",
+      "intended_use": "",
+      "dimensions_mm": {},
+      "printer_profile": "generic-fdm",
+      "components": [],
+      "output_formats": ["blend", "stl", "3mf", "png"]
+    },
+    "product-line/alpha/variant/default/example/release/": null,
+    "product-line/alpha/variant/default/example/review/": null,
+    "product-line/alpha/variant/default/example/script/": null,
+    "product-line/alpha/variant/default/example/source/": null,
+    "product-line/alpha/variant/default/example/workflow.yaml": {
+      "schema_version": "1.0",
+      "product": "example",
+      "current_stage": "brief",
+      "approvals": {},
+      "blockers": [],
+      "physical_print_status": "pending",
+      "history": []
+    },
+    "product-line/alpha/variant/default/variant.yaml": {
+      "schema_version": "1.0",
+      "slug": "default",
+      "name": "Default",
+      "theme": "Winter",
+      "palette": {},
+      "constraints": [],
+      "products": ["example"]
+    },
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  },
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# Parity Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "Parity Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["alpha", "zulu"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/alpha/": null,
+    "product-line/alpha/AGENTS.md": "# Alpha agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/alpha/ai/": null,
+    "product-line/alpha/ai/agent/": null,
+    "product-line/alpha/ai/skill/": null,
+    "product-line/alpha/brief/": null,
+    "product-line/alpha/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "alpha",
+      "name": "Alpha",
+      "description": "A line",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": ["default"]
+    },
+    "product-line/alpha/variant/": null,
+    "product-line/alpha/variant/default/": null,
+    "product-line/alpha/variant/default/AGENTS.md": "# Default variant instructions\n\nRead `variant.yaml`, the parent product-line instructions, and each product manifest.\nApply this variant's theme, palette, and constraints consistently across its catalog.\nDo not weaken shared mechanical interfaces without recording an explicit product exception.\n",
+    "product-line/alpha/variant/default/example/": null,
+    "product-line/alpha/variant/default/example/AGENTS.md": "# Replacement product instructions\n\nRead `product.yaml`, `workflow.yaml`, `assets.yaml` when present, and all parent\n`AGENTS.md` files before changing this product.\nKeep canonical editable files in `source/`, generated meshes in `export/`, slicer\npackages in `package/`, renders in `preview/`, and immutable versions in `release/`.\nNever mark a physical print as passed without recorded test-print evidence.\n",
+    "product-line/alpha/variant/default/example/export/": null,
+    "product-line/alpha/variant/default/example/export/stl/": null,
+    "product-line/alpha/variant/default/example/package/": null,
+    "product-line/alpha/variant/default/example/preview/": null,
+    "product-line/alpha/variant/default/example/product.yaml": {
+      "schema_version": "1.0",
+      "slug": "example",
+      "name": "Replacement",
+      "summary": "",
+      "intended_use": "",
+      "dimensions_mm": {},
+      "printer_profile": "generic-fdm",
+      "components": [],
+      "output_formats": ["blend", "stl", "3mf", "png"]
+    },
+    "product-line/alpha/variant/default/example/release/": null,
+    "product-line/alpha/variant/default/example/review/": null,
+    "product-line/alpha/variant/default/example/script/": null,
+    "product-line/alpha/variant/default/example/source/": null,
+    "product-line/alpha/variant/default/example/workflow.yaml": {
+      "schema_version": "1.0",
+      "product": "example",
+      "current_stage": "brief",
+      "approvals": {},
+      "blockers": [],
+      "physical_print_status": "pending",
+      "history": []
+    },
+    "product-line/alpha/variant/default/variant.yaml": {
+      "schema_version": "1.0",
+      "slug": "default",
+      "name": "Default",
+      "theme": "Winter",
+      "palette": {},
+      "constraints": [],
+      "products": ["example"]
+    },
+    "product-line/zulu/": null,
+    "product-line/zulu/AGENTS.md": "# Zulu agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/zulu/ai/": null,
+    "product-line/zulu/ai/agent/": null,
+    "product-line/zulu/ai/skill/": null,
+    "product-line/zulu/brief/": null,
+    "product-line/zulu/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "zulu",
+      "name": "Zulu",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/zulu/variant/": null,
+    "schema/": null,
+    "template/": null
+  }
+]

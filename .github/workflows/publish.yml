@@ -1,0 +1,66 @@
+name: Publish toolchain
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: toolchain-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mfoster"
+          cache: npm
+      - name: Assign this main run an immutable version
+        id: version
+        run: |
+          BASE="$(node -p "require('./apps/aps_cli/package.json').version")"
+          VERSION="$(node scripts/release-version.mjs "$BASE" "$GITHUB_RUN_NUMBER")"
+          npm version "$VERSION" --workspace=@mfoster/ai-product-studio --no-git-tag-version --ignore-scripts --allow-same-version
+          npm pkg set "apsReleaseCommit=$GITHUB_SHA" --workspace=@mfoster/ai-product-studio
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - run: npm ci
+      - name: Test studio synchronization
+        run: npm test
+      - name: Typecheck workspaces
+        run: npm run typecheck
+      - name: Lint and check formatting
+        run: |
+          npm run lint
+          npm run format:check
+          npx prettier --check scripts/*.mjs .github/workflows/*.yml
+      - name: Build and pack toolchain
+        run: |
+          mkdir -p "$RUNNER_TEMP/package"
+          npm pack --workspace=@mfoster/ai-product-studio --pack-destination "$RUNNER_TEMP/package"
+      - name: Verify packed consumer installation
+        run: node scripts/test-toolchain-package.mjs "$RUNNER_TEMP"/package/*.tgz
+      - name: Publish verified artifact
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/publish-toolchain.mjs "$RUNNER_TEMP"/package/*.tgz
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          TAG="toolchain-v$VERSION"
+          gh release view "$TAG" > /dev/null 2>&1 ||
+            gh release create "$TAG" --target "$GITHUB_SHA" --title "AI Product Studio $VERSION" --generate-notes

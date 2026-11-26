@@ -1,0 +1,106 @@
+[
+  {
+    ".gitattributes": "* text=auto eol=lf\n\n*.blend binary\n*.blend1 binary\n*.stl binary\n*.3mf binary\n*.png binary\n*.jpg binary\n*.jpeg binary\n",
+    ".github/": null,
+    ".github/agents/": null,
+    ".github/instructions/": null,
+    ".github/skills/": null,
+    ".gitignore": ".DS_Store\n.aps/\n*.blend2\n*.blend@\n",
+    "AGENTS.md": "# AI Product Studio agent instructions\n\nRead the nearest `AGENTS.md` and applicable manifests before changing product assets.\nUse millimeters for printable geometry. Keep source, export, package, preview, and\nrelease assets separate. Do not claim slicing or physical print success without evidence.\nRun registry synchronization, asset inventory, and validation before release.\n",
+    "config/": null,
+    "config/material/": null,
+    "config/material/material.yaml": {
+      "schema_version": "1.0",
+      "materials": [
+        {
+          "slug": "pla",
+          "name": "PLA",
+          "nozzle_temperature_c": {
+            "minimum": 190,
+            "maximum": 230
+          },
+          "bed_temperature_c": {
+            "minimum": 45,
+            "maximum": 65
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.2,
+          "notes": ["General-purpose rigid filament with low warping."]
+        },
+        {
+          "slug": "petg",
+          "name": "PETG",
+          "nozzle_temperature_c": {
+            "minimum": 220,
+            "maximum": 260
+          },
+          "bed_temperature_c": {
+            "minimum": 70,
+            "maximum": 90
+          },
+          "minimum_wall_mm": 1.2,
+          "shrink_compensation_percent": 0.4,
+          "notes": [
+            "Durable filament with good layer adhesion; manage stringing."
+          ]
+        }
+      ]
+    },
+    "config/printer/": null,
+    "config/printer/generic-fdm.yaml": {
+      "schema_version": "1.0",
+      "slug": "generic-fdm",
+      "name": "Generic FDM Printer",
+      "technology": "FDM",
+      "build_volume_mm": {
+        "x": 220,
+        "y": 220,
+        "z": 250
+      },
+      "nozzle_diameter_mm": 0.4,
+      "minimum_wall_mm": 1.2,
+      "minimum_detail_mm": 0.8,
+      "supports_multi_material": false,
+      "max_material_slots": 1,
+      "supported_materials": ["pla", "petg"],
+      "slicer": "Generic slicer",
+      "package_format": "3mf",
+      "slicing": "manual"
+    },
+    "config/studio.yaml": {
+      "schema_version": "1.0",
+      "name": "AI Product Studio",
+      "default_printer": "generic-fdm",
+      "material_config": "config/material/material.yaml",
+      "product_lines": ["line"],
+      "registry_index": ".aps/registry.yaml"
+    },
+    "product-line/": null,
+    "product-line/.gitkeep": "",
+    "product-line/line/": null,
+    "product-line/line/AGENTS.md": "# Line agent instructions\n\nRead `product-line.yaml` and the active variant and product manifests before editing assets.\nPreserve the product line's design language, shared mechanics, naming, and workflow gates.\nProduct-local agents and skills under `ai/` are authoritative; synchronize them with\n`aps registry sync` rather than editing generated root copies.\n",
+    "product-line/line/ai/": null,
+    "product-line/line/ai/agent/": null,
+    "product-line/line/ai/skill/": null,
+    "product-line/line/brief/": null,
+    "product-line/line/product-line.yaml": {
+      "schema_version": "1.0",
+      "slug": "line",
+      "name": "Line",
+      "description": "",
+      "audience": [],
+      "design_language": [],
+      "default_workflow": [
+        "brief",
+        "design",
+        "review",
+        "print-validation",
+        "release"
+      ],
+      "variants": []
+    },
+    "product-line/line/variant/": null,
+    "schema/": null,
+    "template/": null
+  }
+]

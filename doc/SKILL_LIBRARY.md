@@ -10,6 +10,7 @@ rather than treating one oversized skill as a complete workflow.
 |---|---|
 | `mesh-printability-audit` | Mesh health, repair evidence, scale, and export re-import checks |
 | `fit-tolerance-engineering` | Mating clearances, assembly paths, coupons, and fit evidence |
+| `calibration-coupon-design` | Coupon scope, bracketing, labelling, removability, and what a coupon cannot prove |
 | `wall-strength-engineering` | Load paths, wall sections, joints, loops, and reinforcement |
 | `support-free-orientation` | Component orientation, overhang redesign, bridges, and supports |
 | `fdm-detail-design` | Nozzle-aware relief, text, texture, gaps, and silhouette |
@@ -25,7 +26,9 @@ rather than treating one oversized skill as a complete workflow.
 | `bambu-plate-planning` | Bambu Studio layout, AMS, support, seam, and slice review |
 
 Product-line-specific art direction remains under
-`product-line/<line>/ai/skill/` and is synchronized into `.github/skills/`.
+the separate studio's `product-line/<line>/ai/skill/` and is synchronized into
+that studio's `.github/skills/`. Consult its local instructions for specialist
+roles and stage-specific composition.
 
 ## Recommended execution order
 
@@ -48,6 +51,7 @@ example, support-free orientation can require changes to wall strength or relief
 
 - `threaded-container-mechanism`
 - `fit-tolerance-engineering`
+- `calibration-coupon-design` when a clearance is unproven
 - `wall-strength-engineering`
 - Product-line decorative skill
 - `organic-character-detail` when the subject includes figures or animals
@@ -66,6 +70,7 @@ example, support-free orientation can require changes to wall strength or relief
 
 - `model-repair-from-stl`
 - `fit-tolerance-engineering`
+- `calibration-coupon-design` when a mating dimension is measured rather than known
 - `wall-strength-engineering`
 - `mesh-printability-audit`
 - `support-free-orientation`
@@ -83,6 +88,22 @@ example, support-free orientation can require changes to wall strength or relief
 - `catalog-render-and-review`
 - `3mf-release-packaging`
 
+### Mechanical assembly with unproven fits
+
+- `fit-tolerance-engineering`
+- `calibration-coupon-design`
+- `wall-strength-engineering`
+- `support-free-orientation`
+- `mesh-printability-audit`
+- `3mf-release-packaging`
+- `bambu-plate-planning`
+- `test-print-feedback-loop`
+
+Qualify each interface on a coupon before releasing a full part set, and carry
+the coupon provenance forward in the product manifest. A coupon qualifies only
+what it reproduces, so record the print orientation of both halves and the
+properties that do not transfer.
+
 ### Catalog variant or seasonal refresh
 
 - Existing product-line style skill
@@ -99,6 +120,14 @@ Skills must distinguish these claims:
 - **Geometry validated:** source meshes and dimensions pass model checks.
 - **Package validated:** exported assets retain scale, alignment, and component structure.
 - **Slice reviewed:** Bambu Studio toolpaths, supports, seams, and AMS assignments were inspected.
+- **Slice captured:** the slicer project was saved and its settings extracted with
+  `aps slicer capture`, so the preset, layer height, wall count, supports, and filament
+  are recorded as checksummed evidence. Settings quoted from memory are `stated`
+  assumptions and never qualify as captured.
+- **Coupon validated:** a printed calibration coupon qualified one parameter, for
+  the feature, orientation, and engagement the coupon reproduced — and nothing else.
 - **Physically validated:** a traceable printed version met recorded acceptance criteria.
 
-No earlier result implies a later one.
+No earlier result implies a later one. A coupon result does not imply an
+assembled result, and it does not carry across a change of orientation, scale,
+feature count, or engagement depth.

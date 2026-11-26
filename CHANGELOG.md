@@ -15,3 +15,4 @@ and the project uses semantic versioning.
 - Asset inventory and workflow validation.
 - Blender and 3MF helper templates.
 - Reusable 3D-print engineering and creative skill library.
+- Interactive printer, slicer, and material configuration wizard.

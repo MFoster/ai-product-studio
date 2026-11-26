@@ -1,0 +1,29 @@
+{
+  "name": "@mfoster/aps-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "schema"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit --strict --skipLibCheck --module nodenext --target es2022 index.d.ts",
+    "lint": "npm run typecheck",
+    "format:check": "prettier --check index.js index.d.ts package.json test"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "prettier": "^3.6.0",
+    "typescript": "^5.9.0"
+  }
+}

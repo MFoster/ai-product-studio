@@ -1,0 +1,13 @@
+{
+  "studio.schema.json": "2bf89f4c8d290e40859c6745be6232ddfe3eeec15a41e1c1a140c11102b52c85",
+  "product-line.schema.json": "ad62029edb63b9865a176f47c18ccdab234cb6896f4b105cff986083552fcf26",
+  "variant.schema.json": "3429d58fbc9c90bb596818518b70b44af7e4b429861bce7dbb80d3c1992feb72",
+  "product.schema.json": "394070b6b8118576b0f12f08b10b2dbf1eeb29758fd7f8912e6a65a6d2496a54",
+  "asset.schema.json": "82897b7926c963e1f4a0c4f66da317a659bc36e607f91c450504f36493eed0cf",
+  "group.schema.json": "549aa22d86459b59d8eeb70e23208792e531d7060b64e0f27337f4a930989b36",
+  "material.schema.json": "017dc6c914dbcef11f0991a7af32f448836abdd9ba4551843af21eda0fd7f1cd",
+  "workflow.schema.json": "47db0f527567689dbe7ad236edb88c128e0295c7b951cc58389a601ea578f012",
+  "printer.schema.json": "69e39a1fe74222fab9d56c67591adf6702fc65b6a39857a618c7273a43da737d",
+  "slice.schema.json": "927ed8ae3be26549d408de214a327641569d943b1211034e1ef686f73c221a9e",
+  "release.schema.json": "bde79e67f986405b92ce6da7f7386bd61eb42ee82da6eff0606b5423544c908b"
+}

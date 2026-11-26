@@ -1,0 +1,18 @@
+[
+  {
+    ".bash_completions/": null,
+    ".bash_completions/aps.sh": "_aps_completion() {\n    local IFS=$'\n'\n    COMPREPLY=( $( env COMP_WORDS=\"${COMP_WORDS[*]}\" \\\n                   COMP_CWORD=$COMP_CWORD \\\n                   _APS_COMPLETE=complete_bash $1 ) )\n    return 0\n}\n\ncomplete -o default -F _aps_completion aps",
+    ".bashrc": "\nsource '<ROOT>/.bash_completions/aps.sh'\n"
+  },
+  {
+    ".zfunc/": null,
+    ".zfunc/_aps": "#compdef aps\n\n_aps_completion() {\n  eval $(env _TYPER_COMPLETE_ARGS=\"${words[1,$CURRENT]}\" _APS_COMPLETE=complete_zsh aps)\n}\n\ncompdef _aps_completion aps",
+    ".zshrc": "fpath+=~/.zfunc; autoload -Uz compinit; compinit\n\nzstyle ':completion:*' menu select\n"
+  },
+  {
+    ".config/": null,
+    ".config/fish/": null,
+    ".config/fish/completions/": null,
+    ".config/fish/completions/aps.fish": "complete --command aps --no-files --arguments \"(env _APS_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=get-args _TYPER_COMPLETE_ARGS=(commandline -cp) aps)\" --condition \"env _APS_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=is-args _TYPER_COMPLETE_ARGS=(commandline -cp) aps\"\n"
+  }
+]

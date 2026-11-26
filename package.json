@@ -1,0 +1,25 @@
+{
+  "name": "ai-product-studio",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=engineer_ui",
+    "build": "npm run build --workspace=engineer_ui",
+    "build:toolchain": "npm run build --workspace=@mfoster/ai-product-studio",
+    "pack:toolchain": "npm pack --workspace=@mfoster/ai-product-studio",
+    "start": "npm run start --workspace=engineer_ui",
+    "test": "npm run test:release && npm run test --workspace=@mfoster/aps-contracts && npm run test --workspace=engineer_ui && npm run test --workspace=@mfoster/ai-product-studio",
+    "test:release": "node --test scripts/*.test.mjs",
+    "lint": "npm run lint --workspace=@mfoster/aps-contracts && npm run lint --workspace=engineer_ui && npm run lint --workspace=@mfoster/ai-product-studio",
+    "format:check": "npm run format:check --workspace=@mfoster/aps-contracts && npm run format:check --workspace=engineer_ui && npm run format:check --workspace=@mfoster/ai-product-studio",
+    "typecheck": "npm run typecheck --workspace=@mfoster/aps-contracts && npm run typecheck --workspace=engineer_ui && npm run typecheck --workspace=@mfoster/ai-product-studio",
+    "aps": "npm run aps --workspace=@mfoster/ai-product-studio --",
+    "aps:node": "npm run aps:node --workspace=@mfoster/ai-product-studio --"
+  }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "profile": "Import-Module PSReadLine\nSet-PSReadLineKeyHandler -Chord Tab -Function MenuComplete\n$scriptblock = {\n    param($wordToComplete, $commandAst, $cursorPosition)\n    $Env:_APS_COMPLETE = \"complete_powershell\"\n    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()\n    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete\n    aps | ForEach-Object {\n        $commandArray = $_ -Split \":::\"\n        $command = $commandArray[0]\n        $helpString = $commandArray[1]\n        [System.Management.Automation.CompletionResult]::new(\n            $command, $command, 'ParameterValue', $helpString)\n    }\n    $Env:_APS_COMPLETE = \"\"\n    $Env:_TYPER_COMPLETE_ARGS = \"\"\n    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = \"\"\n}\nRegister-ArgumentCompleter -Native -CommandName aps -ScriptBlock $scriptblock\n",
+    "log": "-Command Set-ExecutionPolicy Unrestricted -Scope CurrentUser\n-NoProfile -Command echo $profile\n"
+  },
+  {
+    "profile": "Import-Module PSReadLine\nSet-PSReadLineKeyHandler -Chord Tab -Function MenuComplete\n$scriptblock = {\n    param($wordToComplete, $commandAst, $cursorPosition)\n    $Env:_APS_COMPLETE = \"complete_powershell\"\n    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()\n    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete\n    aps | ForEach-Object {\n        $commandArray = $_ -Split \":::\"\n        $command = $commandArray[0]\n        $helpString = $commandArray[1]\n        [System.Management.Automation.CompletionResult]::new(\n            $command, $command, 'ParameterValue', $helpString)\n    }\n    $Env:_APS_COMPLETE = \"\"\n    $Env:_TYPER_COMPLETE_ARGS = \"\"\n    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = \"\"\n}\nRegister-ArgumentCompleter -Native -CommandName aps -ScriptBlock $scriptblock\n",
+    "log": "-Command Set-ExecutionPolicy Unrestricted -Scope CurrentUser\n-NoProfile -Command echo $profile\n"
+  }
+]

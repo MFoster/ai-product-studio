@@ -1,0 +1,28 @@
+[
+  {
+    "status": 0
+  },
+  {
+    "status": 0
+  },
+  {
+    "input": "\n\n\ninf\n\n\n\n\n\n\n\n\n\n",
+    "status": 0
+  },
+  {
+    "input": "\n\n\nnan\n\n\n\n\n\n\n\n\n\n",
+    "status": 0
+  },
+  {
+    "input": "\n\n\n1e9999\n\n\n\n\n\n\n\n\n\n",
+    "status": 0
+  },
+  {
+    "input": "\n\n\n-inf\n\n\n\n\n\n\n\n\n\n",
+    "status": 1
+  },
+  {
+    "input": "\n\n\n\n\n\nnan\n\n\n\n\n\n\n",
+    "status": 1
+  }
+]

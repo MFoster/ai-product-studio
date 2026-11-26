@@ -1,0 +1,602 @@
+[
+  {
+    "args": [],
+    "words": "aps ",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "config\ninit\nvalidate\nproduct-line\nvariant\nproduct\nregistry\nassets\nworkflow\nschema\nrelease\nslicer\n"
+  },
+  {
+    "args": [],
+    "words": "aps wo",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "workflow\n"
+  },
+  {
+    "args": [],
+    "words": "aps --",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--install-completion\n--show-completion\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow ",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "status\nadvance\nprint-result\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x r",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "review\nrelease\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x review --note hi --",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--approval\n--root\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps init --name --",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--name\n--dry-run\n--force\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps assets package model --g",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--group\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --y",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--yes\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root\n--yes\n-y\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --yes -",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -y -",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps constructor --",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--install-completion\n--show-completion\n--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps unknown w",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "workflow\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent --",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--help\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent ",
+    "mode": "complete_bash",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "status\nadvance\nprint-result\n"
+  },
+  {
+    "args": ["--show-completion", "bash"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "_aps_completion() {\n    local IFS=$'\n'\n    COMPREPLY=( $( env COMP_WORDS=\"${COMP_WORDS[*]}\" \\\n                   COMP_CWORD=$COMP_CWORD \\\n                   _APS_COMPLETE=complete_bash $1 ) )\n    return 0\n}\n\ncomplete -o default -F _aps_completion aps\n"
+  },
+  {
+    "args": [],
+    "words": "aps ",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"config\":\"Interactively configure the studio printer...\"\n\"init\":\"Initialize a new AI Product Studio directory.\"\n\"validate\":\"Validate studio manifests, assets, skills,...\"\n\"product-line\":\"Create and manage product-line workspaces.\"\n\"variant\":\"Create and manage variants within a...\"\n\"product\":\"Create and manage individual printable...\"\n\"registry\":\"Synchronize product-local agents and...\"\n\"assets\":\"Inventory managed products and unmanaged...\"\n\"workflow\":\"Inspect and advance gated product workflow...\"\n\"schema\":\"Generate JSON Schemas from the typed...\"\n\"release\":\"Create immutable product release manifests.\"\n\"slicer\":\"Capture and inspect the slicer settings a...\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps wo",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"workflow\":\"Inspect and advance gated product workflow...\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps --",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--install-completion\":\"Install completion for the current shell.\"\n\"--show-completion\":\"Show completion for the current shell, to copy it or customize the installation.\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow ",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"status\":\"Show a product''s current workflow and...\"\n\"advance\":\"Advance a product by one workflow stage...\"\n\"print-result\":\"Record passed or failed physical...\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x r",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"review\"\n\"release\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x review --note hi --",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--approval\"\n\"--root\":\"Studio root; overrides APS_STUDIO_ROOT and directory discovery.\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps init --name --",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--name\"\n\"--dry-run\"\n\"--force\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps assets package model --g",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--group\":\"Build only this group ID.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --y",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--yes\":\"Write without final confirmation.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--root\":\"Studio root; overrides APS_STUDIO_ROOT and directory discovery.\"\n\"--yes\":\"Write without final confirmation.\"\n\"-y\":\"Write without final confirmation.\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --yes -",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--root\":\"Studio root; overrides APS_STUDIO_ROOT and directory discovery.\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -y -",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--root\":\"Studio root; overrides APS_STUDIO_ROOT and directory discovery.\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps constructor --",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--install-completion\":\"Install completion for the current shell.\"\n\"--show-completion\":\"Show completion for the current shell, to copy it or customize the installation.\"\n\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps unknown w",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"workflow\":\"Inspect and advance gated product workflow...\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent --",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"--help\":\"Show this message and exit.\"))'\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent ",
+    "mode": "complete_zsh",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "_arguments '*: :((\"status\":\"Show a product''s current workflow and...\"\n\"advance\":\"Advance a product by one workflow stage...\"\n\"print-result\":\"Record passed or failed physical...\"))'\n"
+  },
+  {
+    "args": ["--show-completion", "zsh"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "#compdef aps\n\n_aps_completion() {\n  eval $(env _TYPER_COMPLETE_ARGS=\"${words[1,$CURRENT]}\" _APS_COMPLETE=complete_zsh aps)\n}\n\ncompdef _aps_completion aps\n"
+  },
+  {
+    "args": [],
+    "words": "aps ",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "config\tInteractively configure the studio printer...\ninit\tInitialize a new AI Product Studio directory.\nvalidate\tValidate studio manifests, assets, skills,...\nproduct-line\tCreate and manage product-line workspaces.\nvariant\tCreate and manage variants within a...\nproduct\tCreate and manage individual printable...\nregistry\tSynchronize product-local agents and...\nassets\tInventory managed products and unmanaged...\nworkflow\tInspect and advance gated product workflow...\nschema\tGenerate JSON Schemas from the typed...\nrelease\tCreate immutable product release manifests.\nslicer\tCapture and inspect the slicer settings a...\n"
+  },
+  {
+    "args": [],
+    "words": "aps wo",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "workflow\tInspect and advance gated product workflow...\n"
+  },
+  {
+    "args": [],
+    "words": "aps --",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--install-completion\tInstall completion for the current shell.\n--show-completion\tShow completion for the current shell, to copy it or customize the installation.\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow ",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "status\tShow a product's current workflow and...\nadvance\tAdvance a product by one workflow stage...\nprint-result\tRecord passed or failed physical...\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x r",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "review\nrelease\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x review --note hi --",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--approval\n--root\tStudio root; overrides APS_STUDIO_ROOT and directory discovery.\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps init --name --",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--name\n--dry-run\n--force\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps assets package model --g",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--group\tBuild only this group ID.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --y",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--yes\tWrite without final confirmation.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root\tStudio root; overrides APS_STUDIO_ROOT and directory discovery.\n--yes\tWrite without final confirmation.\n-y\tWrite without final confirmation.\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --yes -",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root\tStudio root; overrides APS_STUDIO_ROOT and directory discovery.\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -y -",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root\tStudio root; overrides APS_STUDIO_ROOT and directory discovery.\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps constructor --",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--install-completion\tInstall completion for the current shell.\n--show-completion\tShow completion for the current shell, to copy it or customize the installation.\n--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps unknown w",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "workflow\tInspect and advance gated product workflow...\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent --",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--help\tShow this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent ",
+    "mode": "complete_fish",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "status\tShow a product's current workflow and...\nadvance\tAdvance a product by one workflow stage...\nprint-result\tRecord passed or failed physical...\n"
+  },
+  {
+    "args": ["--show-completion", "fish"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "complete --command aps --no-files --arguments \"(env _APS_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=get-args _TYPER_COMPLETE_ARGS=(commandline -cp) aps)\" --condition \"env _APS_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=is-args _TYPER_COMPLETE_ARGS=(commandline -cp) aps\"\n"
+  },
+  {
+    "args": [],
+    "words": "aps ",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "config:::Interactively configure the studio printer...\ninit:::Initialize a new AI Product Studio directory.\nvalidate:::Validate studio manifests, assets, skills,...\nproduct-line:::Create and manage product-line workspaces.\nvariant:::Create and manage variants within a...\nproduct:::Create and manage individual printable...\nregistry:::Synchronize product-local agents and...\nassets:::Inventory managed products and unmanaged...\nworkflow:::Inspect and advance gated product workflow...\nschema:::Generate JSON Schemas from the typed...\nrelease:::Create immutable product release manifests.\nslicer:::Capture and inspect the slicer settings a...\n"
+  },
+  {
+    "args": [],
+    "words": "aps wo",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "workflow:::Inspect and advance gated product workflow...\n"
+  },
+  {
+    "args": [],
+    "words": "aps --",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--install-completion:::Install completion for the current shell.\n--show-completion:::Show completion for the current shell, to copy it or customize the installation.\n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow ",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "status:::Show a product's current workflow and...\nadvance:::Advance a product by one workflow stage...\nprint-result:::Record passed or failed physical...\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x r",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "review::: \nrelease::: \n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow advance x review --note hi --",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--approval::: \n--root:::Studio root; overrides APS_STUDIO_ROOT and directory discovery.\n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps init --name --",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--name::: \n--dry-run::: \n--force::: \n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps assets package model --g",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--group:::Build only this group ID.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --y",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--yes:::Write without final confirmation.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root:::Studio root; overrides APS_STUDIO_ROOT and directory discovery.\n--yes:::Write without final confirmation.\n-y:::Write without final confirmation.\n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config --yes -",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root:::Studio root; overrides APS_STUDIO_ROOT and directory discovery.\n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps config -y -",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--root:::Studio root; overrides APS_STUDIO_ROOT and directory discovery.\n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps constructor --",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--install-completion:::Install completion for the current shell.\n--show-completion:::Show completion for the current shell, to copy it or customize the installation.\n--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps unknown w",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "workflow:::Inspect and advance gated product workflow...\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent --",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "--help:::Show this message and exit.\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow nonexistent ",
+    "mode": "complete_powershell",
+    "fishAction": "get-args",
+    "status": 0,
+    "stdout": "status:::Show a product's current workflow and...\nadvance:::Advance a product by one workflow stage...\nprint-result:::Record passed or failed physical...\n"
+  },
+  {
+    "args": ["--show-completion", "powershell"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "Import-Module PSReadLine\nSet-PSReadLineKeyHandler -Chord Tab -Function MenuComplete\n$scriptblock = {\n    param($wordToComplete, $commandAst, $cursorPosition)\n    $Env:_APS_COMPLETE = \"complete_powershell\"\n    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()\n    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete\n    aps | ForEach-Object {\n        $commandArray = $_ -Split \":::\"\n        $command = $commandArray[0]\n        $helpString = $commandArray[1]\n        [System.Management.Automation.CompletionResult]::new(\n            $command, $command, 'ParameterValue', $helpString)\n    }\n    $Env:_APS_COMPLETE = \"\"\n    $Env:_TYPER_COMPLETE_ARGS = \"\"\n    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = \"\"\n}\nRegister-ArgumentCompleter -Native -CommandName aps -ScriptBlock $scriptblock\n"
+  },
+  {
+    "args": [],
+    "words": "aps workflow ",
+    "mode": "complete_fish",
+    "fishAction": "is-args",
+    "status": 0,
+    "stdout": ""
+  },
+  {
+    "args": [],
+    "words": "aps nonexistent",
+    "mode": "complete_fish",
+    "fishAction": "is-args",
+    "status": 1,
+    "stdout": ""
+  },
+  {
+    "args": ["--install-completion", "bash"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "Shells.bash completion installed in <ROOT>/bash-baseline/.bash_completions/aps.sh\nCompletion will take effect once you restart the terminal\n"
+  },
+  {
+    "args": ["--install-completion", "zsh"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "Shells.zsh completion installed in <ROOT>/zsh-baseline/.zfunc/_aps\nCompletion will take effect once you restart the terminal\n"
+  },
+  {
+    "args": ["--install-completion", "fish"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "Shells.fish completion installed in <ROOT>/fish-baseline/.config/fish/completions/aps.fish\nCompletion will take effect once you restart the terminal\n"
+  },
+  {
+    "args": ["--install-completion", "powershell"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "Shells.powershell completion installed in <ROOT>/powershell-baseline/profile.ps1\nCompletion will take effect once you restart the terminal\n"
+  },
+  {
+    "args": ["--install-completion", "pwsh"],
+    "words": "",
+    "mode": "",
+    "fishAction": "",
+    "status": 0,
+    "stdout": "Shells.pwsh completion installed in <ROOT>/pwsh-baseline/profile.ps1\nCompletion will take effect once you restart the terminal\n"
+  }
+]

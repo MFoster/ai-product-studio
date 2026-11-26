@@ -1,0 +1,734 @@
+[
+  [
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "name": "AI Product Studio",
+        "default_printer": "generic-fdm",
+        "material_config": "config/material/material.yaml",
+        "product_lines": [],
+        "registry_index": ".aps/registry.yaml"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "name": "AI Product Studio",
+        "default_printer": "generic-fdm",
+        "material_config": "config/material.yaml",
+        "product_lines": [],
+        "registry_index": ".aps/registry.yaml"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "name": "AI Product Studio",
+        "default_printer": "generic-fdm",
+        "material_config": "config/material",
+        "product_lines": [],
+        "registry_index": ".aps/registry.yaml"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": true,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 10,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 1,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.5,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 1,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 100,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 1,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 1,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 220,
+          "y": 220,
+          "z": 250
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": true,
+      "data": {
+        "schema_version": "1.0",
+        "slug": "generic-fdm",
+        "name": "Generic FDM Printer",
+        "technology": "FDM",
+        "build_volume_mm": {
+          "x": 100,
+          "y": 200,
+          "z": 300
+        },
+        "nozzle_diameter_mm": 0.4,
+        "minimum_wall_mm": 1.2,
+        "minimum_detail_mm": 0.8,
+        "supports_multi_material": false,
+        "max_material_slots": 1,
+        "supported_materials": ["pla", "petg"],
+        "slicer": "Generic slicer",
+        "package_format": "3mf",
+        "slicing": "manual"
+      }
+    },
+    {
+      "valid": false
+    },
+    {
+      "valid": false
+    }
+  ]
+]

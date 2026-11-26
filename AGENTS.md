@@ -16,6 +16,8 @@ and packaged for Bambu Studio.
 - Use millimeters for printable geometry and preserve intended printer scale.
 - Do not overwrite existing source models or release assets without explicit approval.
 - Do not claim slicing success or physical print success without evidence.
+- Capture slicer settings with `aps slicer capture` from a saved slicer project before
+  printing; a recalled preset name is an assumption, not evidence.
 - Record generated assets with `aps assets inventory`.
 - Run `aps validate` before completing structural or release work.
 - Preserve unrelated binary assets and user changes.
