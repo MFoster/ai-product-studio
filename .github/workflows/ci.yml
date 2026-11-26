@@ -134,34 +134,6 @@ jobs:
           npm pack --workspace=@mfoster/ai-product-studio --pack-destination "$RUNNER_TEMP/aps-package" --quiet
           node scripts/test-toolchain-package.mjs "$RUNNER_TEMP"/aps-package/*.tgz
 
-  aps-cli-windows-completion:
-    runs-on: windows-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python oracle
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install Python CLI
-        run: python -m pip install -e .
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: npm
-
-      - name: Install workspaces
-        run: npm ci
-
-      - name: Compare Windows shell and path behavior
-        env:
-          APS_PYTHON: python
-        run: npx tsx --test --test-name-pattern="Windows shell detection|Windows home expansion|Windows manifest paths|registry paths use portable|managed inventory matches Python|workflow artifact extensions|registry synchronization and stale|schema generation matches Python|legacy asset inventory matches Python" apps/aps_cli/test/parity.test.ts
-
   containers:
     runs-on: ubuntu-latest
     steps:

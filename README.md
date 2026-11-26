@@ -187,6 +187,10 @@ For filenames ending in a dot, inventory roles follow Python 3.14's `pathlib`
 behavior; Python 3.12 and 3.13 retain the trailing dot in the role.
 On POSIX, non-strict symlink-loop resolution also follows Python 3.14; earlier
 Python versions may reject the same paths.
+The legacy oracle pins Typer and Pydantic to the tested versions because its
+interactive parameter inspection and generated schemas depend on their APIs.
+Native Windows qualification is deferred; use the Linux containers on Windows.
+Windows-specific helper tests remain available for future porting work.
 
 ## Docker
 
