@@ -22,6 +22,7 @@ import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
+import { stripVTControlCharacters } from "node:util";
 import { parse } from "yaml";
 import {
   loadAssets,
@@ -1300,13 +1301,16 @@ test("invalid command arguments fail with the same exit status as Python", () =>
   ] as const) {
     for (const kind of ["python", "node"] as const) {
       const result = command(kind, [...args]);
-      assert.ok(result.stderr.includes(message), `${kind}: ${result.stderr}`);
+      assert.ok(
+        stripVTControlCharacters(result.stderr).includes(message),
+        `${kind}: ${result.stderr}`,
+      );
     }
   }
   for (const kind of ["python", "node"] as const) {
     const result = command(kind, ["init", "--help", "--name", "--unknown"]);
     assert.equal(result.status, 0, `${kind}: ${result.stderr}`);
-    assert.match(result.stdout, /--dry-run/);
+    assert.match(stripVTControlCharacters(result.stdout), /--dry-run/);
   }
 });
 
@@ -1444,7 +1448,9 @@ test("help exposes the same options for every Python command", () => {
     "slicer capture",
   ];
   const options = (text: string) =>
-    [...new Set(text.match(/--[a-z][a-z-]*/g) ?? [])].sort();
+    [
+      ...new Set(stripVTControlCharacters(text).match(/--[a-z][a-z-]*/g) ?? []),
+    ].sort();
   for (const name of commands) {
     const args = [...name.split(" ").filter(Boolean), "--help"];
     const expected = command("python", args);
